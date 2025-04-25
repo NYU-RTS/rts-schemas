@@ -1,0 +1,395 @@
+{
+  "description": "ComplianceSuite represents a set of scans that will be applied to the\ncluster. These should help deployers achieve a certain compliance target.",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "Contains the definition of the suite",
+      "type": "object",
+      "required": [
+        "scans"
+      ],
+      "properties": {
+        "autoApplyRemediations": {
+          "description": "Defines whether or not the remediations should be applied automatically",
+          "type": "boolean"
+        },
+        "autoUpdateRemediations": {
+          "description": "Defines whether or not the remediations should be updated automatically.\nThis is done by deleting the \"outdated\" object from the remediation.",
+          "type": "boolean"
+        },
+        "scans": {
+          "description": "Contains a list of the scans to execute on the cluster",
+          "type": "array",
+          "items": {
+            "description": "ComplianceScanSpecWrapper provides a ComplianceScanSpec and a Name",
+            "type": "object",
+            "properties": {
+              "content": {
+                "description": "Is the path to the file that contains the content (the data stream).\nNote that the path needs to be relative to the `/` (root) directory, as\nit is in the ContentImage",
+                "type": "string"
+              },
+              "contentImage": {
+                "description": "Is the image with the content (Data Stream), that will be used to run\nOpenSCAP.",
+                "type": "string"
+              },
+              "debug": {
+                "description": "Enable debug logging of workloads and OpenSCAP",
+                "type": "boolean"
+              },
+              "httpsProxy": {
+                "description": "It is recommended to set the proxy via the config.openshift.io/Proxy object\nDefines a proxy for the scan to get external resources from. This is useful for\ndisconnected installations with access to a proxy.",
+                "type": "string"
+              },
+              "maxRetryOnTimeout": {
+                "description": "MaxRetryOnTimeout is the maximum number of times the scan will be retried if it times out.",
+                "type": "integer"
+              },
+              "name": {
+                "description": "Contains a human readable name for the scan. This is to identify the\nobjects that it creates.",
+                "type": "string"
+              },
+              "noExternalResources": {
+                "description": "Defines that no external resources in the Data Stream should be used. External\nresources could be, for instance, CVE feeds. This is useful for disconnected\ninstallations without access to a proxy.",
+                "type": "boolean"
+              },
+              "nodeSelector": {
+                "description": "By setting this, it's possible to only run the scan on certain nodes in\nthe cluster. Note that when applying remediations generated from the\nscan, this should match the selector of the MachineConfigPool you want\nto apply the remediations to.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "priorityClass": {
+                "description": "Defines the PriorityClass to use for launching scan related pods,\nthe Name of a desired PriorityClass should be set here, this is an\noptional field, if PriorityClass is invalid or not found, it will be ignored.",
+                "type": "string"
+              },
+              "profile": {
+                "description": "Is the profile in the data stream to be used. This is the collection of\nrules that will be checked for.",
+                "type": "string"
+              },
+              "rawResultStorage": {
+                "description": "Specifies settings that pertain to raw result storage.",
+                "type": "object",
+                "properties": {
+                  "nodeSelector": {
+                    "description": "By setting this, it's possible to configure where the result server instances\nare run. These instances will mount a Persistent Volume to store the raw\nresults, so special care should be taken to schedule these in trusted nodes.",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  },
+                  "pvAccessModes": {
+                    "description": "Specifies the access modes that the PersistentVolume will be created with.\nThe persistent volume will hold the raw results of the scan.",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "rotation": {
+                    "description": "Specifies the amount of scans for which the raw results will be stored.\nOlder results will get rotated, and it's the responsibility of administrators\nto store these results elsewhere before rotation happens. Note that a rotation\npolicy of '0' disables rotation entirely. Defaults to 3.",
+                    "type": "integer"
+                  },
+                  "size": {
+                    "description": "Specifies the amount of storage to ask for storing the raw results. Note that\nif re-scans happen, the new results will also need to be stored. Defaults to 1Gi.",
+                    "type": "string"
+                  },
+                  "storageClassName": {
+                    "description": "Specifies the StorageClassName to use when creating the PersistentVolumeClaim\nto hold the raw results. By default this is null, which will attempt to use the\ndefault storage class configured in the cluster. If there is no default class specified\nthen this needs to be set."
+                  },
+                  "tolerations": {
+                    "description": "Specifies tolerations needed for the result server to run on the nodes. This is useful\nin case the target set of nodes have custom taints that don't allow certain\nworkloads to run. Defaults to allowing scheduling on master nodes.",
+                    "type": "array",
+                    "items": {
+                      "description": "The pod this Toleration is attached to tolerates any taint that matches\nthe triple <key,value,effect> using the matching operator <operator>.",
+                      "type": "object",
+                      "properties": {
+                        "effect": {
+                          "description": "Effect indicates the taint effect to match. Empty means match all taint effects.\nWhen specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
+                          "type": "string"
+                        },
+                        "key": {
+                          "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys.\nIf the key is empty, operator must be Exists; this combination means to match all values and all keys.",
+                          "type": "string"
+                        },
+                        "operator": {
+                          "description": "Operator represents a key's relationship to the value.\nValid operators are Exists and Equal. Defaults to Equal.\nExists is equivalent to wildcard for value, so that a pod can\ntolerate all taints of a particular category.",
+                          "type": "string"
+                        },
+                        "tolerationSeconds": {
+                          "description": "TolerationSeconds represents the period of time the toleration (which must be\nof effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,\nit is not set, which means tolerate the taint forever (do not evict). Zero and\nnegative values will be treated as 0 (evict immediately) by the system.",
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "value": {
+                          "description": "Value is the taint value the toleration matches to.\nIf the operator is Exists, the value should be empty, otherwise just a regular string.",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "remediationEnforcement": {
+                "description": "Specifies what to do with remediations of Enforcement type. If left empty,\nthis defaults to \"off\" which doesn't create nor apply any enforcement remediations.\nIf set to \"all\" this creates any enforcement remediations it encounters.\nSubsequently, this can also be set to a specific type. e.g. setting it to\n\"gatekeeper\" will apply any enforcement remediations relevant to the\nGatekeeper OPA system.\nThese objects will annotated in the content itself with:\n    complianceascode.io/enforcement-type: <type>",
+                "type": "string"
+              },
+              "rule": {
+                "description": "A Rule can be specified if the scan should check only for a specific\nrule. Note that when leaving this empty, the scan will check for all the\nrules for a specific profile.",
+                "type": "string"
+              },
+              "scanLimits": {
+                "description": "ScanLimits allows to set the resource limits that the scan pods are allowed to use.\nBy default, compliance operator will use sensible defaults (500Mi memory, 100m CPU\nfor the scanner container and 200Mi memory with 100m CPU for the api-resource-collector\ncontainer).",
+                "type": "object",
+                "additionalProperties": {
+                  "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                  "x-kubernetes-int-or-string": true
+                }
+              },
+              "scanTolerations": {
+                "description": "Specifies tolerations needed for the scan to run on the nodes. This is useful\nin case the target set of nodes have custom taints that don't allow certain\nworkloads to run. Defaults to allowing scheduling on all nodes.",
+                "type": "array",
+                "items": {
+                  "description": "The pod this Toleration is attached to tolerates any taint that matches\nthe triple <key,value,effect> using the matching operator <operator>.",
+                  "type": "object",
+                  "properties": {
+                    "effect": {
+                      "description": "Effect indicates the taint effect to match. Empty means match all taint effects.\nWhen specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
+                      "type": "string"
+                    },
+                    "key": {
+                      "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys.\nIf the key is empty, operator must be Exists; this combination means to match all values and all keys.",
+                      "type": "string"
+                    },
+                    "operator": {
+                      "description": "Operator represents a key's relationship to the value.\nValid operators are Exists and Equal. Defaults to Equal.\nExists is equivalent to wildcard for value, so that a pod can\ntolerate all taints of a particular category.",
+                      "type": "string"
+                    },
+                    "tolerationSeconds": {
+                      "description": "TolerationSeconds represents the period of time the toleration (which must be\nof effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,\nit is not set, which means tolerate the taint forever (do not evict). Zero and\nnegative values will be treated as 0 (evict immediately) by the system.",
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "value": {
+                      "description": "Value is the taint value the toleration matches to.\nIf the operator is Exists, the value should be empty, otherwise just a regular string.",
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "scanType": {
+                "description": "The type of Compliance scan.",
+                "type": "string"
+              },
+              "showNotApplicable": {
+                "description": "Determines whether to hide or show results that are not applicable.",
+                "type": "boolean"
+              },
+              "strictNodeScan": {
+                "description": "Defines whether the scan should proceed if we're not able to\nscan all the nodes or not. `true` means that the operator\nshould be strict and error out. `false` means that we don't\nneed to be strict and we can proceed.",
+                "type": "boolean"
+              },
+              "tailoringConfigMap": {
+                "description": "Is a reference to a ConfigMap that contains the\ntailoring file. It assumes a key called `tailoring.xml` which will\nhave the tailoring contents.",
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "Name of the ConfigMap being referenced",
+                    "type": "string"
+                  }
+                }
+              },
+              "timeout": {
+                "description": "Timeout is the maximum amount of time the scan can run. If the scan\nhasn't finished by then, it will be aborted.",
+                "type": "string"
+              }
+            }
+          },
+          "x-kubernetes-list-type": "atomic"
+        },
+        "schedule": {
+          "description": "Defines a schedule for the scans to run. This is in cronjob format.\nNote the scan will still be triggered immediately, and the scheduled\nscans will start running only after the initial results are ready.",
+          "type": "string"
+        },
+        "suspend": {
+          "description": "Defines if a schedule should be suspended and is a boolean value,\ndefaulting to False.",
+          "type": "boolean"
+        }
+      }
+    },
+    "status": {
+      "description": "Contains the current state of the suite",
+      "type": "object",
+      "properties": {
+        "conditions": {
+          "description": "Conditions is a set of Condition instances.",
+          "type": "array",
+          "items": {
+            "description": "Condition represents an observation of an object's state. Conditions are an\nextension mechanism intended to be used when the details of an observation\nare not a priori known or would not apply to all instances of a given Kind.\n\nConditions should be added to explicitly convey properties that users and\ncomponents care about rather than requiring those properties to be inferred\nfrom other observations. Once defined, the meaning of a Condition can not be\nchanged arbitrarily - it becomes part of the API, and has the same\nbackwards- and forwards-compatibility concerns of any other part of the API.",
+            "type": "object",
+            "required": [
+              "status",
+              "type"
+            ],
+            "properties": {
+              "lastTransitionTime": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "message": {
+                "type": "string"
+              },
+              "reason": {
+                "description": "ConditionReason is intended to be a one-word, CamelCase representation of\nthe category of cause of the current status. It is intended to be used in\nconcise output, such as one-line kubectl get output, and in summarizing\noccurrences of causes.",
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "type": {
+                "description": "ConditionType is the type of the condition and is typically a CamelCased\nword or short phrase.\n\nCondition types should indicate state in the \"abnormal-true\" polarity. For\nexample, if the condition indicates when a policy is invalid, the \"is valid\"\ncase is probably the norm, so the condition should be called \"Invalid\".",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "phase": {
+          "description": "Represents the status of the compliance scan run.",
+          "type": "string"
+        },
+        "result": {
+          "description": "Represents the result of the compliance scan",
+          "type": "string"
+        },
+        "scanStatuses": {
+          "type": "array",
+          "items": {
+            "description": "ComplianceScanStatusWrapper provides a ComplianceScanStatus and a Name",
+            "type": "object",
+            "properties": {
+              "conditions": {
+                "description": "Conditions is a set of Condition instances.",
+                "type": "array",
+                "items": {
+                  "description": "Condition represents an observation of an object's state. Conditions are an\nextension mechanism intended to be used when the details of an observation\nare not a priori known or would not apply to all instances of a given Kind.\n\nConditions should be added to explicitly convey properties that users and\ncomponents care about rather than requiring those properties to be inferred\nfrom other observations. Once defined, the meaning of a Condition can not be\nchanged arbitrarily - it becomes part of the API, and has the same\nbackwards- and forwards-compatibility concerns of any other part of the API.",
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "type"
+                  ],
+                  "properties": {
+                    "lastTransitionTime": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "description": "ConditionReason is intended to be a one-word, CamelCase representation of\nthe category of cause of the current status. It is intended to be used in\nconcise output, such as one-line kubectl get output, and in summarizing\noccurrences of causes.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "description": "ConditionType is the type of the condition and is typically a CamelCased\nword or short phrase.\n\nCondition types should indicate state in the \"abnormal-true\" polarity. For\nexample, if the condition indicates when a policy is invalid, the \"is valid\"\ncase is probably the norm, so the condition should be called \"Invalid\".",
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "currentIndex": {
+                "description": "Specifies the current index of the scan. Given multiple scans, this marks the\namount that have been executed.",
+                "type": "integer",
+                "format": "int64"
+              },
+              "endTimestamp": {
+                "description": "Is the time when the scan was finished",
+                "type": "string",
+                "format": "date-time"
+              },
+              "errormsg": {
+                "description": "If there are issues on the scan, this will be filled up with an error\nmessage.",
+                "type": "string"
+              },
+              "name": {
+                "description": "Contains a human readable name for the scan. This is to identify the\nobjects that it creates.",
+                "type": "string"
+              },
+              "phase": {
+                "description": "Is the phase where the scan is at. Normally, one must wait for the scan\nto reach the phase DONE.",
+                "type": "string"
+              },
+              "remainingRetries": {
+                "description": "Is the number of retries left for the scan on timeout",
+                "type": "integer"
+              },
+              "result": {
+                "description": "Once the scan reaches the phase DONE, this will contain the result of\nthe scan. Where COMPLIANT means that the scan succeeded; NON-COMPLIANT\nmeans that there were rule violations; and ERROR means that the scan\ncouldn't complete due to an issue.",
+                "type": "string"
+              },
+              "resultsStorage": {
+                "description": "Specifies the object that's storing the raw results for the scan.",
+                "type": "object",
+                "properties": {
+                  "apiVersion": {
+                    "description": "API version of the referent.",
+                    "type": "string"
+                  },
+                  "kind": {
+                    "description": "Kind of the referent.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "Name of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                    "type": "string"
+                  },
+                  "namespace": {
+                    "description": "Namespace of the referent.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
+                    "type": "string"
+                  }
+                }
+              },
+              "startTimestamp": {
+                "description": "Is the time when the scan was started",
+                "type": "string",
+                "format": "date-time"
+              },
+              "warnings": {
+                "description": "If there are warnings on the scan, this will be filled up with warning\nmessages.",
+                "type": "string"
+              }
+            }
+          },
+          "x-kubernetes-list-type": "atomic"
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "compliance.openshift.io",
+      "kind": "ComplianceSuite",
+      "version": "v1alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

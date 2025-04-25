@@ -1,0 +1,204 @@
+{
+  "description": "Auto-generated derived type for TrinoCatalogSpec via `CustomResource`",
+  "type": "object",
+  "title": "TrinoCatalog",
+  "required": [
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "type": "object",
+      "required": [
+        "connector"
+      ],
+      "properties": {
+        "configOverrides": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "connector": {
+          "type": "object",
+          "properties": {
+            "blackHole": {
+              "type": "object"
+            },
+            "generic": {
+              "type": "object",
+              "required": [
+                "connectorName"
+              ],
+              "properties": {
+                "connectorName": {
+                  "description": "Name of the Trino connector. Will be passed to `connector.name`.",
+                  "type": "string"
+                },
+                "properties": {
+                  "description": "A map of properties to put in the connector configuration file. They can be specified either as a raw value or be read from a Secret or ConfigMap.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                      "value": {
+                        "type": "string"
+                      },
+                      "valueFromConfigMap": {
+                        "description": "Selects a key from a ConfigMap.",
+                        "type": "object",
+                        "required": [
+                          "key"
+                        ],
+                        "properties": {
+                          "key": {
+                            "description": "The key to select.",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                            "type": "string"
+                          },
+                          "optional": {
+                            "description": "Specify whether the ConfigMap or its key must be defined",
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "valueFromSecret": {
+                        "description": "SecretKeySelector selects a key of a Secret.",
+                        "type": "object",
+                        "required": [
+                          "key"
+                        ],
+                        "properties": {
+                          "key": {
+                            "description": "The key of the secret to select from.  Must be a valid secret key.",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                            "type": "string"
+                          },
+                          "optional": {
+                            "description": "Specify whether the Secret or its key must be defined",
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "googleSheet": {
+              "type": "object",
+              "required": [
+                "credentialsSecret",
+                "metadataSheetId"
+              ],
+              "properties": {
+                "cache": {
+                  "description": "Cache the contents of sheets. This is used to reduce Google Sheets API usage and latency."
+                },
+                "credentialsSecret": {
+                  "description": "Name of the secret containing the Google API JSON key file. The key used from the Secret is `credentials`",
+                  "type": "string"
+                },
+                "metadataSheetId": {
+                  "description": "Sheet ID of the spreadsheet, that contains the table mapping",
+                  "type": "string"
+                }
+              }
+            },
+            "hive": {
+              "type": "object",
+              "required": [
+                "metastore"
+              ],
+              "properties": {
+                "hdfs": {
+                  "description": "Connection to an HDFS cluster. Please make sure that the underlying Hive metastore also has access to the HDFS.",
+                  "required": [
+                    "configMap"
+                  ]
+                },
+                "metastore": {
+                  "description": "Mandatory connection to a Hive Metastore, which will be used as a storage for metadata.",
+                  "type": "object",
+                  "required": [
+                    "configMap"
+                  ],
+                  "properties": {
+                    "configMap": {
+                      "description": "Name of the discovery-configmap providing information about the Hive metastore",
+                      "type": "string"
+                    }
+                  }
+                },
+                "s3": {
+                  "description": "Connection to an S3 store. Please make sure that the underlying Hive metastore also has access to the S3 store."
+                }
+              }
+            },
+            "iceberg": {
+              "type": "object",
+              "required": [
+                "metastore"
+              ],
+              "properties": {
+                "hdfs": {
+                  "description": "Connection to an HDFS cluster. Please make sure that the underlying Hive metastore also has access to the HDFS.",
+                  "required": [
+                    "configMap"
+                  ]
+                },
+                "metastore": {
+                  "description": "Mandatory connection to a Hive Metastore, which will be used as a storage for metadata.",
+                  "type": "object",
+                  "required": [
+                    "configMap"
+                  ],
+                  "properties": {
+                    "configMap": {
+                      "description": "Name of the discovery-configmap providing information about the Hive metastore",
+                      "type": "string"
+                    }
+                  }
+                },
+                "s3": {
+                  "description": "Connection to an S3 store. Please make sure that the underlying Hive metastore also has access to the S3 store."
+                }
+              }
+            },
+            "tpcds": {
+              "type": "object"
+            },
+            "tpch": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "trino.stackable.tech",
+      "kind": "TrinoCatalog",
+      "version": "v1alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

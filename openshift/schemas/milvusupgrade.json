@@ -1,0 +1,189 @@
+{
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "type": "object",
+      "required": [
+        "milvus",
+        "sourceVersion",
+        "targetVersion"
+      ],
+      "properties": {
+        "backupPVC": {
+          "type": "string"
+        },
+        "maxRetry": {
+          "type": "integer"
+        },
+        "milvus": {
+          "type": "object",
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "namespace": {
+              "type": "string"
+            }
+          }
+        },
+        "operation": {
+          "type": "string",
+          "enum": [
+            "upgrade",
+            "rollback"
+          ]
+        },
+        "rollbackIfFailed": {
+          "type": "boolean"
+        },
+        "sourceVersion": {
+          "type": "string"
+        },
+        "targetImage": {
+          "type": "string"
+        },
+        "targetVersion": {
+          "type": "string"
+        },
+        "toolImage": {
+          "type": "string"
+        }
+      }
+    },
+    "status": {
+      "type": "object",
+      "properties": {
+        "backupPVC": {
+          "type": "string"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "lastTransitionTime",
+              "message",
+              "reason",
+              "status",
+              "type"
+            ],
+            "properties": {
+              "lastTransitionTime": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "message": {
+                "type": "string",
+                "maxLength": 32768
+              },
+              "observedGeneration": {
+                "type": "integer",
+                "format": "int64",
+                "minimum": 0
+              },
+              "reason": {
+                "type": "string",
+                "maxLength": 1024,
+                "minLength": 1,
+                "pattern": "^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "True",
+                  "False",
+                  "Unknown"
+                ]
+              },
+              "type": {
+                "type": "string",
+                "maxLength": 316,
+                "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
+              }
+            }
+          },
+          "x-kubernetes-list-map-keys": [
+            "type"
+          ],
+          "x-kubernetes-list-type": "map"
+        },
+        "isRollbacking": {
+          "type": "boolean"
+        },
+        "metaBackuped": {
+          "type": "boolean"
+        },
+        "metaStorageChanged": {
+          "type": "boolean"
+        },
+        "replicasBeforeUprade": {
+          "type": "object",
+          "properties": {
+            "dataCoord": {
+              "type": "integer"
+            },
+            "dataNode": {
+              "type": "integer"
+            },
+            "indexCoord": {
+              "type": "integer"
+            },
+            "indexNode": {
+              "type": "integer"
+            },
+            "mixCoord": {
+              "type": "integer"
+            },
+            "proxy": {
+              "type": "integer"
+            },
+            "queryCoord": {
+              "type": "integer"
+            },
+            "queryNode": {
+              "type": "integer"
+            },
+            "rootCoord": {
+              "type": "integer"
+            },
+            "standalone": {
+              "type": "integer"
+            }
+          }
+        },
+        "retriedTimes": {
+          "type": "integer"
+        },
+        "sourceImage": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "milvus.io",
+      "kind": "MilvusUpgrade",
+      "version": "v1beta1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,262 @@
+{
+  "description": "Policy is the Schema for the policies API",
+  "type": "object",
+  "required": [
+    "metadata",
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "PolicySpec defines the desired state of Policy",
+      "type": "object",
+      "required": [
+        "disabled",
+        "policy-templates"
+      ],
+      "properties": {
+        "copyPolicyMetadata": {
+          "description": "If set to true (default), all the policy's labels and annotations will be copied to the replicated policy. If set to false, only the policy framework specific policy labels and annotations will be copied to the replicated policy.",
+          "type": "boolean"
+        },
+        "dependencies": {
+          "description": "PolicyDependencies that apply to each template in this Policy",
+          "type": "array",
+          "items": {
+            "description": "Each PolicyDependency defines an object reference which must be in a certain compliance state before the policy should be created.",
+            "type": "object",
+            "required": [
+              "compliance",
+              "name"
+            ],
+            "properties": {
+              "apiVersion": {
+                "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+                "type": "string"
+              },
+              "compliance": {
+                "description": "The ComplianceState (at path .status.compliant) required before the policy should be created",
+                "type": "string",
+                "enum": [
+                  "Compliant",
+                  "Pending",
+                  "NonCompliant"
+                ]
+              },
+              "kind": {
+                "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+                "type": "string"
+              },
+              "name": {
+                "description": "The name of the object to be checked",
+                "type": "string"
+              },
+              "namespace": {
+                "description": "The namespace of the object to be checked (optional)",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "disabled": {
+          "description": "This provides the ability to enable and disable your policies.",
+          "type": "boolean"
+        },
+        "policy-templates": {
+          "description": "Used to create one or more policies to apply to a managed cluster",
+          "type": "array",
+          "items": {
+            "description": "PolicyTemplate template for custom security policy",
+            "type": "object",
+            "required": [
+              "objectDefinition"
+            ],
+            "properties": {
+              "extraDependencies": {
+                "description": "Additional PolicyDependencies that only apply to this template",
+                "type": "array",
+                "items": {
+                  "description": "Each PolicyDependency defines an object reference which must be in a certain compliance state before the policy should be created.",
+                  "type": "object",
+                  "required": [
+                    "compliance",
+                    "name"
+                  ],
+                  "properties": {
+                    "apiVersion": {
+                      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+                      "type": "string"
+                    },
+                    "compliance": {
+                      "description": "The ComplianceState (at path .status.compliant) required before the policy should be created",
+                      "type": "string",
+                      "enum": [
+                        "Compliant",
+                        "Pending",
+                        "NonCompliant"
+                      ]
+                    },
+                    "kind": {
+                      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "The name of the object to be checked",
+                      "type": "string"
+                    },
+                    "namespace": {
+                      "description": "The namespace of the object to be checked (optional)",
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "ignorePending": {
+                "description": "Ignore this template's Pending status when calculating the overall Policy status",
+                "type": "boolean"
+              },
+              "objectDefinition": {
+                "description": "A Kubernetes object defining the policy to apply to a managed cluster",
+                "x-kubernetes-preserve-unknown-fields": true
+              }
+            }
+          }
+        },
+        "remediationAction": {
+          "description": "This value (Enforce or Inform) will override the remediationAction on each template",
+          "type": "string",
+          "enum": [
+            "Inform",
+            "inform",
+            "Enforce",
+            "enforce"
+          ]
+        }
+      }
+    },
+    "status": {
+      "description": "PolicyStatus defines the observed state of Policy",
+      "type": "object",
+      "properties": {
+        "compliant": {
+          "description": "ComplianceState shows the state of enforcement",
+          "type": "string",
+          "enum": [
+            "Compliant",
+            "Pending",
+            "NonCompliant"
+          ]
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "description": "DetailsPerTemplate defines compliance details and history",
+            "type": "object",
+            "properties": {
+              "compliant": {
+                "description": "ComplianceState shows the state of enforcement",
+                "type": "string"
+              },
+              "history": {
+                "type": "array",
+                "items": {
+                  "description": "ComplianceHistory defines compliance details history",
+                  "type": "object",
+                  "properties": {
+                    "eventName": {
+                      "type": "string"
+                    },
+                    "lastTimestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "templateMeta": {
+                "x-kubernetes-preserve-unknown-fields": true
+              }
+            }
+          }
+        },
+        "placement": {
+          "type": "array",
+          "items": {
+            "description": "Placement defines the placement results",
+            "type": "object",
+            "properties": {
+              "decisions": {
+                "type": "array",
+                "items": {
+                  "description": "PlacementDecision defines the decision made by controller",
+                  "type": "object",
+                  "properties": {
+                    "clusterName": {
+                      "type": "string"
+                    },
+                    "clusterNamespace": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "placement": {
+                "type": "string"
+              },
+              "placementBinding": {
+                "type": "string"
+              },
+              "placementRule": {
+                "type": "string"
+              },
+              "policySet": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "status": {
+          "type": "array",
+          "items": {
+            "description": "CompliancePerClusterStatus defines compliance per cluster status",
+            "type": "object",
+            "properties": {
+              "clustername": {
+                "type": "string"
+              },
+              "clusternamespace": {
+                "type": "string"
+              },
+              "compliant": {
+                "description": "ComplianceState shows the state of enforcement",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "policy.open-cluster-management.io",
+      "kind": "Policy",
+      "version": "v1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}
