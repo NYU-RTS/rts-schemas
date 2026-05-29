@@ -1,0 +1,2053 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "contact": {
+      "name": "SchedMD LLC",
+      "url": "https://www.schedmd.com/",
+      "email": "sales@schedmd.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "x-slurm": {
+      "data_parsers": [
+       {
+          "plugin": "v0.0.43",
+          "flags": [
+            "NONE"
+          ]
+        }
+      ],
+      "openapi": [
+        "openapi/slurmctld",
+        "openapi/slurmdbd"
+      ],
+      "version": {
+        "major": "25",
+        "micro": "4",
+        "minor": "05"
+      },
+      "release": "25.05.4"
+    },
+    "title": "Slurm REST API",
+    "description": "API to access and control Slurm",
+    "termsOfService": "https://github.com/SchedMD/slurm/blob/master/DISCLAIMER",
+    "version": "Slurm-25.05.4"
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "paths": {
+    "/slurmdb/v0.0.43/associations/": {
+      "get": {
+        "operationId": "slurmdb_v0043_get_associations",
+        "summary": "Get association list",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "description": "CSV accounts list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "cluster",
+            "in": "query",
+            "description": "CSV clusters list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "default_qos",
+            "in": "query",
+            "description": "CSV QOS list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Include deleted associations",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Include usage",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Filter to only defaults",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Include the raw QOS or delta_qos",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Include sub acct information",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Exclude parent id/name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Exclude limits from parents",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Ignored; process JSON manually to control output format",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "deprecated": true,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "CSV ID list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "parent_account",
+            "in": "query",
+            "description": "CSV names of parent account",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "partition",
+            "in": "query",
+            "description": "CSV partition name list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "qos",
+            "in": "query",
+            "description": "CSV QOS list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "usage_end",
+            "in": "query",
+            "description": "Usage end (UNIX timestamp)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "usage_start",
+            "in": "query",
+            "description": "Usage start (UNIX timestamp)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "description": "CSV user list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of associations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_assocs_resp"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "List of associations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_assocs_resp"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "slurmdb"
+        ]
+      }
+    },
+    "/slurmdb/v0.0.43/association/": {
+      "get": {
+        "operationId": "slurmdb_v0043_get_association",
+        "summary": "Get association info",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "description": "CSV accounts list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "cluster",
+            "in": "query",
+            "description": "CSV clusters list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "default_qos",
+            "in": "query",
+            "description": "CSV QOS list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Include deleted associations",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Include usage",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Filter to only defaults",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Include the raw QOS or delta_qos",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Include sub acct information",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Exclude parent id/name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Exclude limits from parents",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Ignored; process JSON manually to control output format",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "deprecated": true,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "CSV ID list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "parent_account",
+            "in": "query",
+            "description": "CSV names of parent account",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "partition",
+            "in": "query",
+            "description": "CSV partition name list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "qos",
+            "in": "query",
+            "description": "CSV QOS list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "usage_end",
+            "in": "query",
+            "description": "Usage end (UNIX timestamp)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "usage_start",
+            "in": "query",
+            "description": "Usage start (UNIX timestamp)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "description": "CSV user list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of associations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_assocs_resp"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "List of associations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_assocs_resp"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "slurmdb"
+        ]
+      },
+      "delete": {
+        "operationId": "slurmdb_v0043_delete_association",
+        "summary": "Delete association",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "description": "CSV accounts list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "cluster",
+            "in": "query",
+            "description": "CSV clusters list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "default_qos",
+            "in": "query",
+            "description": "CSV QOS list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Include deleted associations",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Include usage",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Filter to only defaults",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Include the raw QOS or delta_qos",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Include sub acct information",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Exclude parent id/name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "Exclude limits from parents",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Ignored; process JSON manually to control output format",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "deprecated": true,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "CSV ID list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "parent_account",
+            "in": "query",
+            "description": "CSV names of parent account",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "partition",
+            "in": "query",
+            "description": "CSV partition name list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "qos",
+            "in": "query",
+            "description": "CSV QOS list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "usage_end",
+            "in": "query",
+            "description": "Usage end (UNIX timestamp)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "usage_start",
+            "in": "query",
+            "description": "Usage start (UNIX timestamp)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "description": "CSV user list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status of associations delete request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_assocs_removed_resp"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Status of associations delete request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_assocs_removed_resp"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "slurmdb"
+        ]
+      }
+    },
+    "/slurmdb/v0.0.43/users_association/": {
+      "post": {
+        "operationId": "slurmdb_v0043_post_users_association",
+        "summary": "Add users with conditional association",
+        "parameters": [
+          {
+            "name": "update_time",
+            "in": "query",
+            "description": "Query partitions updated more recently than this time (UNIX timestamp)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "flags",
+            "in": "query",
+            "description": "Query flags",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ALL",
+                "DETAIL",
+                "MIXED",
+                "LOCAL",
+                "SIBLING",
+                "FEDERATION",
+                "FUTURE"
+              ]
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "description": "Create users with conditional association",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v0.0.43_openapi_users_add_cond_resp"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Add list of users with conditional association",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_users_add_cond_resp_str"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Add list of users with conditional association",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_users_add_cond_resp_str"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "slurmdb"
+        ]
+      }
+    },
+    "/slurmdb/v0.0.43/account/{account_name}": {
+      "delete": {
+        "operationId": "slurmdb_v0043_delete_account",
+        "summary": "Delete account",
+        "parameters": [
+          {
+            "name": "account_name",
+            "in": "path",
+            "description": "Account name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status of account deletion request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_accounts_removed_resp"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Status of account deletion request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_accounts_removed_resp"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "slurmdb"
+        ]
+      },
+      "get": {
+        "operationId": "slurmdb_v0043_get_account",
+        "summary": "Get account info",
+        "parameters": [
+          {
+            "name": "account_name",
+            "in": "path",
+            "description": "Account name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "simple"
+          },
+          {
+            "name": "with_assocs",
+            "in": "query",
+            "description": "Include associations",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "with_coords",
+            "in": "query",
+            "description": "Include coordinators",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "with_deleted",
+            "in": "query",
+            "description": "Include deleted",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of accounts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_accounts_resp"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "List of accounts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_accounts_resp"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "slurmdb"
+        ]
+      }
+    },
+    "/slurmdb/v0.0.43/accounts/": {
+      "get": {
+        "operationId": "slurmdb_v0043_get_accounts",
+        "summary": "Get account list",
+        "parameters": [
+          {
+            "name": "description",
+            "in": "query",
+            "description": "CSV description list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "DELETED",
+            "in": "query",
+            "description": "include deleted associations",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "WithAssociations",
+            "in": "query",
+            "description": "query includes associations",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "WithCoordinators",
+            "in": "query",
+            "description": "query includes coordinators",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "NoUsersAreCoords",
+            "in": "query",
+            "description": "remove users as coordinators",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "UsersAreCoords",
+            "in": "query",
+            "description": "users are coordinators",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": true,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of accounts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_accounts_resp"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "List of accounts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_accounts_resp"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "slurmdb"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "v0.0.43_uint32_no_val_struct": {
+        "type": "object",
+        "properties": {
+          "set": {
+            "description": "True if number has been set; False if number is unset",
+            "type": "boolean"
+          },
+          "infinite": {
+            "description": "True if number has been set to infinite; \"set\" and \"number\" will be ignored",
+            "type": "boolean"
+          },
+          "number": {
+            "description": "If \"set\" is True the number will be set with value; otherwise ignore number contents",
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "required": []
+      },
+      "v0.0.43_openapi_meta": {
+        "type": "object",
+        "properties": {
+          "plugin": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Slurm plugin type (if applicable)",
+                "type": "string"
+              },
+              "name": {
+                "description": "Slurm plugin name (if applicable)",
+                "type": "string"
+              },
+              "data_parser": {
+                "description": "Slurm data_parser plugin",
+                "type": "string"
+              },
+              "accounting_storage": {
+                "description": "Slurm accounting plugin",
+                "type": "string"
+              }
+            }
+          },
+          "client": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "description": "Client source description",
+                "type": "string"
+              },
+              "user": {
+                "description": "Client user (if known)",
+                "type": "string"
+              },
+              "group": {
+                "description": "Client group (if known)",
+                "type": "string"
+              }
+            }
+          },
+          "command": {
+            "description": "CLI command (if applicable)",
+            "$ref": "#/components/schemas/v0.0.43_string_array"
+          },
+          "slurm": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "object",
+                "properties": {
+                  "major": {
+                    "description": "Slurm release major version",
+                    "type": "string"
+                  },
+                  "micro": {
+                    "description": "Slurm release micro version",
+                    "type": "string"
+                  },
+                  "minor": {
+                    "description": "Slurm release minor version",
+                    "type": "string"
+                  }
+                }
+              },
+              "release": {
+                "description": "Slurm release string",
+                "type": "string"
+              },
+              "cluster": {
+                "description": "Slurm cluster name",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required": []
+      },
+      "v0.0.43_string_array": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "v0.0.43_openapi_errors": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/v0.0.43_openapi_error"
+        }
+      },
+      "v0.0.43_openapi_error": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "description": "Long form error description",
+            "type": "string"
+          },
+          "error_number": {
+            "description": "Slurm numeric error identifier",
+            "type": "integer",
+            "format": "int32"
+          },
+          "error": {
+            "description": "Short form error description",
+            "type": "string"
+          },
+          "source": {
+            "description": "Source of error or where error was first detected",
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "v0.0.43_openapi_warnings": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/v0.0.43_openapi_warning"
+        }
+      },
+      "v0.0.43_openapi_warning": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "description": "Long form warning description",
+            "type": "string"
+          },
+          "source": {
+            "description": "Source of warning or where warning was first detected",
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "v0.0.43_tres_list": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/v0.0.43_tres"
+        }
+      },
+      "v0.0.43_tres": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "TRES type (CPU, MEM, etc)",
+            "type": "string"
+          },
+          "name": {
+            "description": "TRES name (if applicable)",
+            "type": "string"
+          },
+          "id": {
+            "description": "ID used in the database",
+            "type": "integer",
+            "format": "int32"
+          },
+          "count": {
+            "description": "TRES count (0 if listed generically)",
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "v0.0.43_assoc_short": {
+        "type": "object",
+        "properties": {
+          "account": {
+            "description": "Account name",
+            "type": "string"
+          },
+          "cluster": {
+            "description": "Cluster name",
+            "type": "string"
+          },
+          "partition": {
+            "description": "Partition name",
+            "type": "string"
+          },
+          "user": {
+            "description": "User name",
+            "type": "string"
+          },
+          "id": {
+            "description": "Numeric association ID",
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "required": [
+          "user"
+        ]
+      },
+      "v0.0.43_account_list": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/v0.0.43_account"
+        }
+      },
+      "v0.0.43_account": {
+        "type": "object",
+        "properties": {
+          "associations": {
+            "description": "Associations involving this account (only populated if requested)",
+            "$ref": "#/components/schemas/v0.0.43_assoc_short_list"
+          },
+          "coordinators": {
+            "description": "List of users that are a coordinator of this account (only populated if requested)",
+            "$ref": "#/components/schemas/v0.0.43_coord_list"
+          },
+          "description": {
+            "description": "Arbitrary string describing the account",
+            "type": "string"
+          },
+          "name": {
+            "description": "Account name",
+            "type": "string"
+          },
+          "organization": {
+            "description": "Organization to which the account belongs",
+            "type": "string"
+          },
+          "flags": {
+            "description": "Flags associated with this account",
+            "type": "array",
+            "items": {
+              "enum": [
+                "DELETED",
+                "WithAssociations",
+                "WithCoordinators",
+                "NoUsersAreCoords",
+                "UsersAreCoords"
+              ],
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "description",
+          "name",
+          "organization"
+        ]
+      },
+      "v0.0.43_assoc_short_list": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/v0.0.43_assoc_short"
+        }
+      },
+      "v0.0.43_coord_list": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/v0.0.43_coord"
+        }
+      },
+      "v0.0.43_coord": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "User name",
+            "type": "string"
+          },
+          "direct": {
+            "description": "Indicates whether the coordinator was directly assigned to this account",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "v0.0.43_accounting_list": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/v0.0.43_accounting"
+        }
+      },
+      "v0.0.43_accounting": {
+        "type": "object",
+        "properties": {
+          "allocated": {
+            "type": "object",
+            "properties": {
+              "seconds": {
+                "description": "Number of seconds allocated",
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          },
+          "id": {
+            "description": "Association ID or Workload characterization key ID",
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_alt": {
+            "description": "Alternate ID (not currently used)",
+            "type": "integer",
+            "format": "int32"
+          },
+          "start": {
+            "description": "When the record was started (UNIX timestamp) (UNIX timestamp or time string recognized by Slurm (e.g., '[MM/DD[/YY]-]HH:MM[:SS]'))",
+            "type": "integer",
+            "format": "int64"
+          },
+          "TRES": {
+            "description": "Trackable resources",
+            "$ref": "#/components/schemas/v0.0.43_tres"
+          }
+        },
+        "required": []
+      },
+      "v0.0.43_assoc_list": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/v0.0.43_assoc"
+        }
+      },
+      "v0.0.43_assoc": {
+        "type": "object",
+        "properties": {
+          "accounting": {
+            "description": "Accounting records containing related resource usage",
+            "$ref": "#/components/schemas/v0.0.43_accounting_list"
+          },
+          "account": {
+            "description": "Account name",
+            "type": "string"
+          },
+          "cluster": {
+            "description": "Cluster name",
+            "type": "string"
+          },
+          "comment": {
+            "description": "Arbitrary comment",
+            "type": "string"
+          },
+          "default": {
+            "type": "object",
+            "properties": {
+              "qos": {
+                "description": "Default QOS",
+                "type": "string"
+              }
+            }
+          },
+          "flags": {
+            "description": "Flags on the association",
+            "type": "array",
+            "items": {
+              "enum": [
+                "DELETED",
+                "NoUpdate",
+                "Exact",
+                "NoUsersAreCoords",
+                "UsersAreCoords"
+              ],
+              "type": "string"
+            }
+          },
+          "max": {
+            "type": "object",
+            "properties": {
+              "jobs": {
+                "type": "object",
+                "properties": {
+                  "per": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "description": "GrpJobs - Maximum number of running jobs in this association and its children (32 bit integer number with flags)",
+                        "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+                      },
+                      "accruing": {
+                        "description": "GrpJobsAccrue - Maximum number of pending jobs able to accrue age priority in this association and its children (32 bit integer number with flags)",
+                        "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+                      },
+                      "submitted": {
+                        "description": "GrpSubmitJobs - Maximum number of jobs in a pending or running state at any time in this association and its children (32 bit integer number with flags)",
+                        "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+                      },
+                      "wall_clock": {
+                        "description": "MaxWallDurationPerJob - Maximum wall clock time in minutes each job can use in this association (32 bit integer number with flags)",
+                        "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+                      }
+                    }
+                  },
+                  "active": {
+                    "description": "MaxJobs - Maximum number of running jobs per user in this association (32 bit integer number with flags)",
+                    "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+                  },
+                  "accruing": {
+                    "description": "MaxJobsAccrue - Maximum number of pending jobs able to accrue age priority at any given time in this association (32 bit integer number with flags)",
+                    "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+                  },
+                  "total": {
+                    "description": "MaxSubmitJobs - Maximum number of jobs in a pending or running state at any time in this association (32 bit integer number with flags)",
+                    "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+                  }
+                }
+              },
+              "tres": {
+                "type": "object",
+                "properties": {
+                  "total": {
+                    "description": "GrpTRES - Maximum number of TRES able to be allocated by running jobs in this association and its children",
+                    "$ref": "#/components/schemas/v0.0.43_tres_list"
+                  },
+                  "group": {
+                    "type": "object",
+                    "properties": {
+                      "minutes": {
+                        "description": "GrpTRESMins - Maximum number of TRES minutes that can possibly be used by past, present, and future jobs in this association and its children",
+                        "$ref": "#/components/schemas/v0.0.43_tres_list"
+                      },
+                      "active": {
+                        "description": "GrpTRESRunMins - Maximum number of TRES minutes able to be allocated by running jobs in this association and its children",
+                        "$ref": "#/components/schemas/v0.0.43_tres_list"
+                      }
+                    }
+                  },
+                  "minutes": {
+                    "type": "object",
+                    "properties": {
+                      "total": {
+                        "description": "Not implemented",
+                        "$ref": "#/components/schemas/v0.0.43_tres_list"
+                      },
+                      "per": {
+                        "type": "object",
+                        "properties": {
+                          "job": {
+                            "description": "MaxTRESMinsPerJob - Maximum number of TRES minutes each job can use in this association",
+                            "$ref": "#/components/schemas/v0.0.43_tres_list"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "per": {
+                    "type": "object",
+                    "properties": {
+                      "job": {
+                        "description": "MaxTRESPerJob - Maximum number of TRES each job can use in this association",
+                        "$ref": "#/components/schemas/v0.0.43_tres_list"
+                      },
+                      "node": {
+                        "description": "MaxTRESPerNode - Maximum number of TRES each node in a job allocation can use in this association",
+                        "$ref": "#/components/schemas/v0.0.43_tres_list"
+                      }
+                    }
+                  }
+                }
+              },
+              "per": {
+                "type": "object",
+                "properties": {
+                  "account": {
+                    "type": "object",
+                    "properties": {
+                      "wall_clock": {
+                        "description": "GrpWall - Maximum wall clock time in minutes able to be allocated by running jobs in this association and its children (32 bit integer number with flags)",
+                        "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "id": {
+            "description": "Unique ID (Association ID)",
+            "type": "integer",
+            "format": "int32"
+          },
+          "is_default": {
+            "description": "Is default association for user",
+            "type": "boolean"
+          },
+          "lineage": {
+            "description": "Complete path up the hierarchy to the root association",
+            "type": "string"
+          },
+          "min": {
+            "type": "object",
+            "properties": {
+              "priority_threshold": {
+                "description": "MinPrioThreshold - Minimum priority required to reserve resources when scheduling (32 bit integer number with flags)",
+                "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+              }
+            }
+          },
+          "parent_account": {
+            "description": "Name of parent account",
+            "type": "string"
+          },
+          "partition": {
+            "description": "Partition name",
+            "type": "string"
+          },
+          "priority": {
+            "description": "Association priority factor (32 bit integer number with flags)",
+            "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+          },
+          "qos": {
+            "description": "List of available QOS names (List of QOS names)",
+            "$ref": "#/components/schemas/v0.0.43_qos_string_id_list"
+          },
+          "shares_raw": {
+            "description": "Allocated shares used for fairshare calculation",
+            "type": "integer",
+            "format": "int32"
+          },
+          "user": {
+            "description": "User name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "user"
+        ]
+      },
+      "v0.0.43_qos_string_id_list": {
+        "description": "List of QOS names",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "v0.0.43_string_list": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "v0.0.43_openapi_assocs_resp": {
+        "type": "object",
+        "properties": {
+          "associations": {
+            "description": "associations",
+            "$ref": "#/components/schemas/v0.0.43_assoc_list"
+          },
+          "meta": {
+            "description": "Slurm meta values",
+            "$ref": "#/components/schemas/v0.0.43_openapi_meta"
+          },
+          "errors": {
+            "description": "Query errors",
+            "$ref": "#/components/schemas/v0.0.43_openapi_errors"
+          },
+          "warnings": {
+            "description": "Query warnings",
+            "$ref": "#/components/schemas/v0.0.43_openapi_warnings"
+          }
+        },
+        "required": [
+          "associations"
+        ]
+      },
+      "v0.0.43_openapi_assocs_removed_resp": {
+        "type": "object",
+        "properties": {
+          "removed_associations": {
+            "description": "removed_associations",
+            "$ref": "#/components/schemas/v0.0.43_string_list"
+          },
+          "meta": {
+            "description": "Slurm meta values",
+            "$ref": "#/components/schemas/v0.0.43_openapi_meta"
+          },
+          "errors": {
+            "description": "Query errors",
+            "$ref": "#/components/schemas/v0.0.43_openapi_errors"
+          },
+          "warnings": {
+            "description": "Query warnings",
+            "$ref": "#/components/schemas/v0.0.43_openapi_warnings"
+          }
+        },
+        "required": [
+          "removed_associations"
+        ]
+      },
+      "v0.0.43_openapi_users_add_cond_resp_str": {
+        "type": "object",
+        "properties": {
+          "added_users": {
+            "description": "added_users",
+            "type": "string"
+          },
+          "meta": {
+            "description": "Slurm meta values",
+            "$ref": "#/components/schemas/v0.0.43_openapi_meta"
+          },
+          "errors": {
+            "description": "Query errors",
+            "$ref": "#/components/schemas/v0.0.43_openapi_errors"
+          },
+          "warnings": {
+            "description": "Query warnings",
+            "$ref": "#/components/schemas/v0.0.43_openapi_warnings"
+          }
+        },
+        "required": [
+          "added_users"
+        ]
+      },
+      "v0.0.43_openapi_users_add_cond_resp": {
+        "type": "object",
+        "properties": {
+          "association_condition": {
+            "description": "Filters to select associations for users",
+            "$ref": "#/components/schemas/v0.0.43_users_add_cond"
+          },
+          "user": {
+            "description": "Admin level of user, DefaultAccount, DefaultWCKey",
+            "$ref": "#/components/schemas/v0.0.43_user_short"
+          },
+          "meta": {
+            "description": "Slurm meta values",
+            "$ref": "#/components/schemas/v0.0.43_openapi_meta"
+          },
+          "errors": {
+            "description": "Query errors",
+            "$ref": "#/components/schemas/v0.0.43_openapi_errors"
+          },
+          "warnings": {
+            "description": "Query warnings",
+            "$ref": "#/components/schemas/v0.0.43_openapi_warnings"
+          }
+        },
+        "required": [
+          "association_condition",
+          "user"
+        ]
+      },
+      "v0.0.43_users_add_cond": {
+        "type": "object",
+        "properties": {
+          "accounts": {
+            "description": "CSV accounts list",
+            "$ref": "#/components/schemas/v0.0.43_string_list"
+          },
+          "association": {
+            "description": "Association limits and options",
+            "$ref": "#/components/schemas/v0.0.43_assoc_rec_set"
+          },
+          "clusters": {
+            "description": "CSV clusters list",
+            "$ref": "#/components/schemas/v0.0.43_string_list"
+          },
+          "partitions": {
+            "description": "CSV partitions list",
+            "$ref": "#/components/schemas/v0.0.43_string_list"
+          },
+          "users": {
+            "description": "CSV users list",
+            "$ref": "#/components/schemas/v0.0.43_string_list"
+          },
+          "wckeys": {
+            "description": "CSV WCKeys list",
+            "$ref": "#/components/schemas/v0.0.43_string_list"
+          }
+        },
+        "required": [
+          "users"
+        ]
+      },
+      "v0.0.43_assoc_rec_set": {
+        "type": "object",
+        "properties": {
+          "comment": {
+            "description": "Arbitrary comment",
+            "type": "string"
+          },
+          "defaultqos": {
+            "description": "Default QOS",
+            "type": "string"
+          },
+          "grpjobs": {
+            "description": "GrpJobs - Maximum number of running jobs in this association and its children (32 bit integer number with flags)",
+            "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+          },
+          "grpjobsaccrue": {
+            "description": "GrpJobsAccrue - Maximum number of pending jobs able to accrue age priority in this association and its children (32 bit integer number with flags)",
+            "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+          },
+          "grpsubmitjobs": {
+            "description": "GrpSubmitJobs - Maximum number of jobs in a pending or running state at any time in this association and its children (32 bit integer number with flags)",
+            "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+          },
+          "grptres": {
+            "description": "GrpTRES - Maximum number of TRES able to be allocated by running jobs in this association and its children",
+            "$ref": "#/components/schemas/v0.0.43_tres_list"
+          },
+          "grptresmins": {
+            "description": "GrpTRESMins - Maximum number of TRES minutes that can possibly be used by past, present, and future jobs in this association and its children",
+            "$ref": "#/components/schemas/v0.0.43_tres_list"
+          },
+          "grptresrunmins": {
+            "description": "GrpTRESRunMins - Maximum number of TRES minutes able to be allocated by running jobs in this association and its children",
+            "$ref": "#/components/schemas/v0.0.43_tres_list"
+          },
+          "grpwall": {
+            "description": "GrpWall - Maximum wall clock time in minutes able to be allocated by running jobs in this association and its children (32 bit integer number with flags)",
+            "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+          },
+          "maxjobs": {
+            "description": "MaxJobs - Maximum number of running jobs per user in this association (32 bit integer number with flags)",
+            "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+          },
+          "maxjobsaccrue": {
+            "description": "MaxJobsAccrue - Maximum number of pending jobs able to accrue age priority at any given time in this association (32 bit integer number with flags)",
+            "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+          },
+          "maxsubmitjobs": {
+            "description": "MaxSubmitJobs - Maximum number of jobs in a pending or running state at any time in this association (32 bit integer number with flags)",
+            "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+          },
+          "maxtresminsperjob": {
+            "description": "MaxTRESMinsPerJob - Maximum number of TRES minutes each job can use in this association",
+            "$ref": "#/components/schemas/v0.0.43_tres_list"
+          },
+          "maxtresrunmins": {
+            "description": "Not implemented",
+            "$ref": "#/components/schemas/v0.0.43_tres_list"
+          },
+          "maxtresperjob": {
+            "description": "MaxTRESPerJob - Maximum number of TRES each job can use in this association",
+            "$ref": "#/components/schemas/v0.0.43_tres_list"
+          },
+          "maxtrespernode": {
+            "description": "MaxTRESPerNode - Maximum number of TRES each node in a job allocation can use in this association",
+            "$ref": "#/components/schemas/v0.0.43_tres_list"
+          },
+          "maxwalldurationperjob": {
+            "description": "MaxWallDurationPerJob - Maximum wall clock time in minutes each job can use in this association (32 bit integer number with flags)",
+            "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+          },
+          "minpriothresh": {
+            "description": "MinPrioThreshold - Minimum priority required to reserve resources when scheduling (32 bit integer number with flags)",
+            "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+          },
+          "parent": {
+            "description": "Name of parent account",
+            "type": "string"
+          },
+          "priority": {
+            "description": "Association priority factor (32 bit integer number with flags)",
+            "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+          },
+          "qoslevel": {
+            "description": "List of available QOS names (List of QOS names)",
+            "$ref": "#/components/schemas/v0.0.43_qos_string_id_list"
+          },
+          "fairshare": {
+            "description": "Allocated shares used for fairshare calculation",
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "required": []
+      },
+      "v0.0.43_user_short": {
+        "type": "object",
+        "properties": {
+          "adminlevel": {
+            "description": "AdminLevel granted to the user",
+            "type": "array",
+            "items": {
+              "enum": [
+                "Not Set",
+                "None",
+                "Operator",
+                "Administrator"
+              ],
+              "type": "string"
+            }
+          },
+          "defaultaccount": {
+            "description": "Default account",
+            "type": "string"
+          },
+          "defaultwckey": {
+            "description": "Default WCKey",
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "v0.0.43_openapi_accounts_removed_resp": {
+        "type": "object",
+        "properties": {
+          "removed_accounts": {
+            "description": "removed_accounts",
+            "$ref": "#/components/schemas/v0.0.43_string_list"
+          },
+          "meta": {
+            "description": "Slurm meta values",
+            "$ref": "#/components/schemas/v0.0.43_openapi_meta"
+          },
+          "errors": {
+            "description": "Query errors",
+            "$ref": "#/components/schemas/v0.0.43_openapi_errors"
+          },
+          "warnings": {
+            "description": "Query warnings",
+            "$ref": "#/components/schemas/v0.0.43_openapi_warnings"
+          }
+        },
+        "required": [
+          "removed_accounts"
+        ]
+      },
+      "v0.0.43_openapi_accounts_resp": {
+        "type": "object",
+        "properties": {
+          "accounts": {
+            "description": "accounts",
+            "$ref": "#/components/schemas/v0.0.43_account_list"
+          },
+          "meta": {
+            "description": "Slurm meta values",
+            "$ref": "#/components/schemas/v0.0.43_openapi_meta"
+          },
+          "errors": {
+            "description": "Query errors",
+            "$ref": "#/components/schemas/v0.0.43_openapi_errors"
+          },
+          "warnings": {
+            "description": "Query warnings",
+            "$ref": "#/components/schemas/v0.0.43_openapi_warnings"
+          }
+        },
+        "required": [
+          "accounts"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "user": {
+        "type": "apiKey",
+        "description": "User name",
+        "name": "X-SLURM-USER-NAME",
+        "in": "header"
+      },
+      "token": {
+        "type": "apiKey",
+        "description": "User access token",
+        "name": "X-SLURM-USER-TOKEN",
+        "in": "header"
+      },
+      "bearerAuth": {
+        "type": "http",
+        "description": "Bearer Authentication",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "slurm",
+      "description": "methods that query slurmctld"
+    },
+    {
+      "name": "slurmdb",
+      "description": "methods that query slurmdbd"
+    },
+    {
+      "name": "openapi",
+      "description": "methods that query for generated OpenAPI specifications"
+    }
+  ],
+  "security": [
+    {
+      "user": [],
+      "token": []
+    },
+    {
+      "token": []
+    },
+    {
+      "bearerAuth": []
+    },
+    {}
+  ]
+}
