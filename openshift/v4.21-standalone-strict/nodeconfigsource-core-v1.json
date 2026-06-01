@@ -4,7 +4,7 @@
   "properties": {
     "configMap": {
       "description": "ConfigMap is a reference to a Node's ConfigMap",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapNodeConfigSource"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapNodeConfigSource"
     }
   },
   "$schema": "http://json-schema.org/schema#"

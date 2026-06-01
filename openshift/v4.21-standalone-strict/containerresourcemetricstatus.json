@@ -16,7 +16,7 @@
     },
     "current": {
       "description": "current contains the current value for the given metric",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricValueStatus"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricValueStatus"
     },
     "name": {
       "description": "name is the name of the resource in question.",

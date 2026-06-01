@@ -14,7 +14,7 @@
     },
     "labels": {
       "description": "LabelSelector is used to select projects by label.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector_v4"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector_v4"
     }
   },
   "$schema": "http://json-schema.org/schema#"

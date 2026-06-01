@@ -4,7 +4,7 @@
   "properties": {
     "userInfo": {
       "description": "User attributes of the user making this request.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.authentication.v1.UserInfo"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.authentication.v1.UserInfo"
     }
   },
   "$schema": "http://json-schema.org/schema#"

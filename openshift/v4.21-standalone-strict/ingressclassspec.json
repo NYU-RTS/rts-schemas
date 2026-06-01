@@ -11,7 +11,7 @@
     },
     "parameters": {
       "description": "parameters is a link to a custom resource containing additional configuration for the controller. This is optional if the controller does not require extra parameters.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.networking.v1.IngressClassParametersReference"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.networking.v1.IngressClassParametersReference"
     }
   },
   "$schema": "http://json-schema.org/schema#"

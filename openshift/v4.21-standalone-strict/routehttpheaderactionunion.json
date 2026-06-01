@@ -7,7 +7,7 @@
   "properties": {
     "set": {
       "description": "set defines the HTTP header that should be set: added if it doesn't exist or replaced if it does. This field is required when type is Set and forbidden otherwise.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.route.v1.RouteSetHTTPHeader"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.route.v1.RouteSetHTTPHeader"
     },
     "type": {
       "description": "type defines the type of the action to be applied on the header. Possible values are Set or Delete. Set allows you to set HTTP request and response headers. Delete allows you to delete HTTP request and response headers.",

@@ -7,7 +7,7 @@ VERSION := $(shell oc version -o json | jq -r 'if .releaseClientVersion then "v"
 endif
 OPENAPI_SPEC_FILE = openapi/openshift-openapi-spec-$(VERSION).json
 FILTERED_SPEC_FILE = openapi/openshift-openapi-spec-$(VERSION)-filtered.json
-PREFIX = https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json
+PREFIX = https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json
 
 define generate_schema
 $(VERSION)$(if $(1),-$(1))/.jsonschema.stamp: $(FILTERED_SPEC_FILE)

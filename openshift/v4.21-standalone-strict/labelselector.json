@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/k8s.io.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/k8s.io.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement"
       },
       "x-kubernetes-list-type": "atomic"
     },

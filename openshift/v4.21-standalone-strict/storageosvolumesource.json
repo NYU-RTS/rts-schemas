@@ -15,7 +15,7 @@
     },
     "secretRef": {
       "description": "secretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not specified, default values will be attempted.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
     },
     "volumeName": {
       "description": "volumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace.",

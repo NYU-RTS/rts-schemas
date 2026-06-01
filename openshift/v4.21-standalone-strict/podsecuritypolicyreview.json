@@ -21,11 +21,11 @@
     },
     "spec": {
       "description": "spec is the PodSecurityPolicy to check.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.security.v1.PodSecurityPolicyReviewSpec"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.security.v1.PodSecurityPolicyReviewSpec"
     },
     "status": {
       "description": "status represents the current information/status for the PodSecurityPolicyReview.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.security.v1.PodSecurityPolicyReviewStatus"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.security.v1.PodSecurityPolicyReviewStatus"
     }
   },
   "x-kubernetes-group-version-kind": [

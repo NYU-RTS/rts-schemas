@@ -14,7 +14,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.operator-framework.api.pkg.operators.v1alpha1.ActionDescriptor"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.operator-framework.api.pkg.operators.v1alpha1.ActionDescriptor"
       }
     },
     "containerPort": {
@@ -63,7 +63,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.operator-framework.api.pkg.operators.v1alpha1.APIResourceReference"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.operator-framework.api.pkg.operators.v1alpha1.APIResourceReference"
       }
     },
     "specDescriptors": {
@@ -72,7 +72,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.operator-framework.api.pkg.operators.v1alpha1.SpecDescriptor"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.operator-framework.api.pkg.operators.v1alpha1.SpecDescriptor"
       }
     },
     "statusDescriptors": {
@@ -81,7 +81,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.operator-framework.api.pkg.operators.v1alpha1.StatusDescriptor"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.operator-framework.api.pkg.operators.v1alpha1.StatusDescriptor"
       }
     },
     "version": {

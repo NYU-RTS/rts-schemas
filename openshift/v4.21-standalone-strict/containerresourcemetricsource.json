@@ -23,7 +23,7 @@
     },
     "target": {
       "description": "target specifies the target value for the given metric",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricTarget"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricTarget"
     }
   },
   "$schema": "http://json-schema.org/schema#"

@@ -9,15 +9,15 @@
   "properties": {
     "describedObject": {
       "description": "describedObject specifies the descriptions of a object,such as kind,name apiVersion",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.autoscaling.v2.CrossVersionObjectReference"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.autoscaling.v2.CrossVersionObjectReference"
     },
     "metric": {
       "description": "metric identifies the target metric by name and selector",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricIdentifier"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricIdentifier"
     },
     "target": {
       "description": "target specifies the target value for the given metric",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricTarget"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricTarget"
     }
   },
   "$schema": "http://json-schema.org/schema#"

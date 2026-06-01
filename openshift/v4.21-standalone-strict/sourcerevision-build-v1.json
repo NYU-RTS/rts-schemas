@@ -7,7 +7,7 @@
   "properties": {
     "git": {
       "description": "Git contains information about git-based build source",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.build.v1.GitSourceRevision"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.build.v1.GitSourceRevision"
     },
     "type": {
       "description": "type of the build source, may be one of 'Source', 'Dockerfile', 'Binary', or 'Images'",

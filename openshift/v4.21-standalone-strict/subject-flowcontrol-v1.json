@@ -7,7 +7,7 @@
   "properties": {
     "group": {
       "description": "`group` matches based on user group name.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.flowcontrol.v1.GroupSubject"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.flowcontrol.v1.GroupSubject"
     },
     "kind": {
       "description": "`kind` indicates which one of the other fields is non-empty. Required",
@@ -18,11 +18,11 @@
     },
     "serviceAccount": {
       "description": "`serviceAccount` matches ServiceAccounts.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.flowcontrol.v1.ServiceAccountSubject"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.flowcontrol.v1.ServiceAccountSubject"
     },
     "user": {
       "description": "`user` matches based on username.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.flowcontrol.v1.UserSubject"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.flowcontrol.v1.UserSubject"
     }
   },
   "x-kubernetes-unions": [

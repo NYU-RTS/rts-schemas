@@ -15,7 +15,7 @@
     },
     "status": {
       "description": "Status indicates how many resources have been consumed by this project",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.ResourceQuotaStatus"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.ResourceQuotaStatus"
     }
   },
   "$schema": "http://json-schema.org/schema#"
