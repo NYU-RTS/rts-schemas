@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "openapi-format": {
+      "source": "thim81/openapi-format",
+      "sourceType": "github",
+      "skillPath": "skills/openapi-format/SKILL.md",
+      "computedHash": "5268f7e3b4843f4de1755042266080db2e17091f4c49328ae2033322fdc50869"
+    }
+  }
+}
