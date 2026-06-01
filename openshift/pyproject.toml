@@ -1,0 +1,8 @@
+[project]
+name = "openshift"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    "openapi2jsonschema>=0.9.0",
+    "pyyaml>=6.0.3",
+]

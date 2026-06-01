@@ -1,0 +1,64 @@
+{
+  "description": "Auto-generated derived type for ListenerSpec via `CustomResource`",
+  "type": "object",
+  "title": "Listener",
+  "required": [
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "Exposes a set of pods to the outside world.\n\nEssentially a Stackable extension of a Kubernetes [`Service`]. Compared to [`Service`], [`Listener`] changes three things: 1. It uses a cluster-level policy object ([`ListenerClass`]) to define how exactly the exposure works 2. It has a consistent API for reading back the exposed address(es) of the service 3. The [`Pod`] must mount a [`Volume`] referring to the `Listener`, which also allows us to control stickiness",
+      "type": "object",
+      "properties": {
+        "className": {
+          "description": "The name of the [`ListenerClass`]."
+        },
+        "extraPodSelectorLabels": {
+          "description": "Extra labels that the [`Pod`]s must match in order to be exposed. They must _also_ still have a `Volume` referring to the listener.",
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "ports": {
+          "description": "Ports that should be exposed."
+        },
+        "publishNotReadyAddresses": {
+          "description": "Whether incoming traffic should also be directed to `Pod`s that are not `Ready`."
+        }
+      }
+    },
+    "status": {
+      "description": "Informs users about how to reach the [`Listener`]."
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "listeners.stackable.tech",
+      "kind": "Listener",
+      "version": "v1alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

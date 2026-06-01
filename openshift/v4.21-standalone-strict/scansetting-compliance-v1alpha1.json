@@ -1,0 +1,259 @@
+{
+  "description": "ScanSetting is the Schema for the scansettings API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "autoApplyRemediations": {
+      "description": "Defines whether or not the remediations should be applied automatically",
+      "type": "boolean"
+    },
+    "autoUpdateRemediations": {
+      "description": "Defines whether or not the remediations should be updated automatically.\nThis is done by deleting the \"outdated\" object from the remediation.",
+      "type": "boolean"
+    },
+    "debug": {
+      "description": "Enable debug logging of workloads and OpenSCAP",
+      "type": "boolean"
+    },
+    "httpsProxy": {
+      "description": "It is recommended to set the proxy via the config.openshift.io/Proxy object\nDefines a proxy for the scan to get external resources from. This is useful for\ndisconnected installations with access to a proxy.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "maxRetryOnTimeout": {
+      "description": "MaxRetryOnTimeout is the maximum number of times the scan will be retried if it times out.",
+      "type": "integer"
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "noExternalResources": {
+      "description": "Defines that no external resources in the Data Stream should be used. External\nresources could be, for instance, CVE feeds. This is useful for disconnected\ninstallations without access to a proxy.",
+      "type": "boolean"
+    },
+    "priorityClass": {
+      "description": "Defines the PriorityClass to use for launching scan related pods,\nthe Name of a desired PriorityClass should be set here, this is an\noptional field, if PriorityClass is invalid or not found, it will be ignored.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rawResultStorage": {
+      "description": "Specifies settings that pertain to raw result storage.",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "description": "Specifies if raw scan results should be saved to persistent volumes.\nThis is useful for enabling compliance scans in environments that\ndon't have storage. Defaults to true.",
+          "type": "boolean"
+        },
+        "nodeSelector": {
+          "description": "By setting this, it's possible to configure where the result server instances\nare run. These instances will mount a Persistent Volume to store the raw\nresults, so special care should be taken to schedule these in trusted nodes.",
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "pvAccessModes": {
+          "description": "Specifies the access modes that the PersistentVolume will be created with.\nThe persistent volume will hold the raw results of the scan.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "rotation": {
+          "description": "Specifies the amount of scans for which the raw results will be stored.\nOlder results will get rotated, and it's the responsibility of administrators\nto store these results elsewhere before rotation happens. Note that a rotation\npolicy of '0' disables rotation entirely. Defaults to 3.",
+          "type": "integer"
+        },
+        "size": {
+          "description": "Specifies the amount of storage to ask for storing the raw results. Note that\nif re-scans happen, the new results will also need to be stored. Defaults to 1Gi.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "storageClassName": {
+          "description": "Specifies the StorageClassName to use when creating the PersistentVolumeClaim\nto hold the raw results. By default this is null, which will attempt to use the\ndefault storage class configured in the cluster. If there is no default class specified\nthen this needs to be set."
+        },
+        "tolerations": {
+          "description": "Specifies tolerations needed for the result server to run on the nodes. This is useful\nin case the target set of nodes have custom taints that don't allow certain\nworkloads to run. Defaults to allowing scheduling on master nodes.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "The pod this Toleration is attached to tolerates any taint that matches\nthe triple <key,value,effect> using the matching operator <operator>.",
+            "type": "object",
+            "properties": {
+              "effect": {
+                "description": "Effect indicates the taint effect to match. Empty means match all taint effects.\nWhen specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "key": {
+                "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys.\nIf the key is empty, operator must be Exists; this combination means to match all values and all keys.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "operator": {
+                "description": "Operator represents a key's relationship to the value.\nValid operators are Exists, Equal, Lt, and Gt. Defaults to Equal.\nExists is equivalent to wildcard for value, so that a pod can\ntolerate all taints of a particular category.\nLt and Gt perform numeric comparisons (requires feature gate TaintTolerationComparisonOperators).",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "tolerationSeconds": {
+                "description": "TolerationSeconds represents the period of time the toleration (which must be\nof effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,\nit is not set, which means tolerate the taint forever (do not evict). Zero and\nnegative values will be treated as 0 (evict immediately) by the system.",
+                "type": "integer",
+                "format": "int64"
+              },
+              "value": {
+                "description": "Value is the taint value the toleration matches to.\nIf the operator is Exists, the value should be empty, otherwise just a regular string.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "remediationEnforcement": {
+      "description": "Specifies what to do with remediations of Enforcement type. If left empty,\nthis defaults to \"off\" which doesn't create nor apply any enforcement remediations.\nIf set to \"all\" this creates any enforcement remediations it encounters.\nSubsequently, this can also be set to a specific type. e.g. setting it to\n\"gatekeeper\" will apply any enforcement remediations relevant to the\nGatekeeper OPA system.\nThese objects will annotated in the content itself with:\n    complianceascode.io/enforcement-type: <type>",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "roles": {
+      "description": "The list of roles to apply node-specific checks to.\n\nThis will be translated to the standard Kubernetes\nrole label `node-role.kubernetes.io/<role name>`.\n\nIt's also possible to specify `@all` as a role, which\nwill run a scan on all nodes by not specifying a node\nselector as we normally do. The usage of `@all` in\nOpenShift is discouraged as the operator won't\nbe able to apply remediations unless roles are specified.\n\nNote that tolerations must still be configured for\nthe opeartor to appropriately schedule scans.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "scanLimits": {
+      "description": "ScanLimits allows to set the resource limits that the scan pods are allowed to use.\nBy default, compliance operator will use sensible defaults (500Mi memory, 100m CPU\nfor the scanner container and 200Mi memory with 100m CPU for the api-resource-collector\ncontainer).",
+      "type": "object",
+      "additionalProperties": {
+        "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+        "x-kubernetes-int-or-string": true
+      }
+    },
+    "scanTolerations": {
+      "description": "Specifies tolerations needed for the scan to run on the nodes. This is useful\nin case the target set of nodes have custom taints that don't allow certain\nworkloads to run. Defaults to allowing scheduling on all nodes.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "The pod this Toleration is attached to tolerates any taint that matches\nthe triple <key,value,effect> using the matching operator <operator>.",
+        "type": "object",
+        "properties": {
+          "effect": {
+            "description": "Effect indicates the taint effect to match. Empty means match all taint effects.\nWhen specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "key": {
+            "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys.\nIf the key is empty, operator must be Exists; this combination means to match all values and all keys.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "operator": {
+            "description": "Operator represents a key's relationship to the value.\nValid operators are Exists, Equal, Lt, and Gt. Defaults to Equal.\nExists is equivalent to wildcard for value, so that a pod can\ntolerate all taints of a particular category.\nLt and Gt perform numeric comparisons (requires feature gate TaintTolerationComparisonOperators).",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tolerationSeconds": {
+            "description": "TolerationSeconds represents the period of time the toleration (which must be\nof effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,\nit is not set, which means tolerate the taint forever (do not evict). Zero and\nnegative values will be treated as 0 (evict immediately) by the system.",
+            "type": "integer",
+            "format": "int64"
+          },
+          "value": {
+            "description": "Value is the taint value the toleration matches to.\nIf the operator is Exists, the value should be empty, otherwise just a regular string.",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "schedule": {
+      "description": "Defines a schedule for the scans to run. This is in cronjob format.\nNote the scan will still be triggered immediately, and the scheduled\nscans will start running only after the initial results are ready.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "showNotApplicable": {
+      "description": "Determines whether to hide or show results that are not applicable.",
+      "type": "boolean"
+    },
+    "strictNodeScan": {
+      "description": "Defines whether the scan should proceed if we're not able to\nscan all the nodes or not. `true` means that the operator\nshould be strict and error out. `false` means that we don't\nneed to be strict and we can proceed.",
+      "type": "boolean"
+    },
+    "suspend": {
+      "description": "Defines if a schedule should be suspended and is a boolean value,\ndefaulting to False.",
+      "type": "boolean"
+    },
+    "timeout": {
+      "description": "Timeout is the maximum amount of time the scan can run. If the scan\nhasn't finished by then, it will be aborted.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "compliance.openshift.io",
+      "kind": "ScanSetting",
+      "version": "v1alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}
