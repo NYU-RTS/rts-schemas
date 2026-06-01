@@ -16,11 +16,11 @@
     },
     "currentCSVDesc": {
       "description": "CurrentCSVSpec holds the spec of the current CSV",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.CSVDescription"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.CSVDescription"
     },
     "deprecation": {
       "description": "Deprecation is an optional field which contains information if the channel is deprecated.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.Deprecation"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.Deprecation"
     },
     "entries": {
       "description": "Entries lists all CSVs in the channel, with their upgrade edges.",
@@ -29,7 +29,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.ChannelEntry"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.ChannelEntry"
       }
     },
     "name": {

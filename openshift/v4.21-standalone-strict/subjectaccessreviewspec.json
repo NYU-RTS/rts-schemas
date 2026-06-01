@@ -34,11 +34,11 @@
     },
     "nonResourceAttributes": {
       "description": "NonResourceAttributes describes information for a non-resource access request",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.authorization.v1.NonResourceAttributes"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.authorization.v1.NonResourceAttributes"
     },
     "resourceAttributes": {
       "description": "ResourceAuthorizationAttributes describes information for a resource access request",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.authorization.v1.ResourceAttributes"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.authorization.v1.ResourceAttributes"
     },
     "uid": {
       "description": "UID information about the requesting user.",

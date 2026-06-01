@@ -28,15 +28,15 @@
     },
     "metadata": {
       "description": "More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "overhead": {
       "description": "overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see\n https://kubernetes.io/docs/concepts/scheduling-eviction/pod-overhead/",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.node.v1.Overhead"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.node.v1.Overhead"
     },
     "scheduling": {
       "description": "scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.node.v1.Scheduling"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.node.v1.Scheduling"
     }
   },
   "x-kubernetes-group-version-kind": [

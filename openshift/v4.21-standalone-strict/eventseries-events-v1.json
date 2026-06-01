@@ -13,7 +13,7 @@
     },
     "lastObservedTime": {
       "description": "lastObservedTime is the time when last Event from the series was seen before last heartbeat.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime"
     }
   },
   "$schema": "http://json-schema.org/schema#"

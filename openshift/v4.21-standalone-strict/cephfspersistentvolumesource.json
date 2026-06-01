@@ -39,7 +39,7 @@
     },
     "secretRef": {
       "description": "secretRef is Optional: SecretRef is reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.SecretReference"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.SecretReference"
     },
     "user": {
       "description": "user is Optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it",

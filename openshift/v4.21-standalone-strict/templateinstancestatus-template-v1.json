@@ -9,7 +9,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.template.v1.TemplateInstanceCondition"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.template.v1.TemplateInstanceCondition"
       }
     },
     "objects": {
@@ -19,7 +19,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.template.v1.TemplateInstanceObject"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.template.v1.TemplateInstanceObject"
       }
     }
   },

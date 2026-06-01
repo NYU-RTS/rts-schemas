@@ -4,7 +4,7 @@
   "properties": {
     "author": {
       "description": "author is the author of a specific commit",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.build.v1.SourceControlUser"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.build.v1.SourceControlUser"
     },
     "commit": {
       "description": "commit is the commit hash identifying a specific commit",
@@ -15,7 +15,7 @@
     },
     "committer": {
       "description": "committer is the committer of a specific commit",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.build.v1.SourceControlUser"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.build.v1.SourceControlUser"
     },
     "message": {
       "description": "message is the description of a specific commit",

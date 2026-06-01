@@ -11,7 +11,7 @@
     },
     "lookupPolicy": {
       "description": "lookupPolicy controls how other resources reference images within this namespace.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageLookupPolicy"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageLookupPolicy"
     },
     "tags": {
       "description": "tags map arbitrary string values to specific image locators",
@@ -20,7 +20,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.image.v1.TagReference"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.image.v1.TagReference"
       },
       "x-kubernetes-patch-merge-key": "name",
       "x-kubernetes-patch-strategy": "merge"

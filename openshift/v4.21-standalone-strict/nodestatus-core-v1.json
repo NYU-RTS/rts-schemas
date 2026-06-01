@@ -9,7 +9,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.NodeAddress"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.NodeAddress"
       },
       "x-kubernetes-list-map-keys": [
         "type"
@@ -22,14 +22,14 @@
       "description": "Allocatable represents the resources of a node that are available for scheduling. Defaults to Capacity.",
       "type": "object",
       "additionalProperties": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
       }
     },
     "capacity": {
       "description": "Capacity represents the total resources of a node. More info: https://kubernetes.io/docs/reference/node/node-status/#capacity",
       "type": "object",
       "additionalProperties": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
       }
     },
     "conditions": {
@@ -39,7 +39,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.NodeCondition"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.NodeCondition"
       },
       "x-kubernetes-list-map-keys": [
         "type"
@@ -50,15 +50,15 @@
     },
     "config": {
       "description": "Status of the config assigned to the node via the dynamic Kubelet config feature.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.NodeConfigStatus"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.NodeConfigStatus"
     },
     "daemonEndpoints": {
       "description": "Endpoints of daemons running on the Node.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.NodeDaemonEndpoints"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.NodeDaemonEndpoints"
     },
     "features": {
       "description": "Features describes the set of features implemented by the CRI implementation.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.NodeFeatures"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.NodeFeatures"
     },
     "images": {
       "description": "List of container images on this node",
@@ -67,13 +67,13 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerImage"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerImage"
       },
       "x-kubernetes-list-type": "atomic"
     },
     "nodeInfo": {
       "description": "Set of ids/uuids to uniquely identify the node. More info: https://kubernetes.io/docs/reference/node/node-status/#info",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.NodeSystemInfo"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.NodeSystemInfo"
     },
     "phase": {
       "description": "NodePhase is the recently observed lifecycle phase of the node. More info: https://kubernetes.io/docs/concepts/nodes/node/#phase The field is never populated, and now is deprecated.\n\nPossible enum values:\n - `\"Pending\"` means the node has been created/added by the system, but not configured.\n - `\"Running\"` means the node has been configured and has Kubernetes components running.\n - `\"Terminated\"` means the node has been removed from the cluster.",
@@ -94,7 +94,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.NodeRuntimeHandler"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.NodeRuntimeHandler"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -105,7 +105,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.AttachedVolume"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.AttachedVolume"
       },
       "x-kubernetes-list-type": "atomic"
     },

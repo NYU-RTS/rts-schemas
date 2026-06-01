@@ -17,14 +17,14 @@
       "description": "blobs is a map of blob name to metadata about the blob.",
       "type": "object",
       "additionalProperties": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageLayerData"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageLayerData"
       }
     },
     "images": {
       "description": "images is a map between an image name and the names of the blobs and config that comprise the image.",
       "type": "object",
       "additionalProperties": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageBlobReferences"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageBlobReferences"
       }
     },
     "kind": {
@@ -36,7 +36,7 @@
     },
     "metadata": {
       "description": "metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta_v2"
     }
   },
   "x-kubernetes-group-version-kind": [

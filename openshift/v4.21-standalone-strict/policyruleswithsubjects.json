@@ -12,7 +12,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.flowcontrol.v1.NonResourcePolicyRule"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.flowcontrol.v1.NonResourcePolicyRule"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -23,7 +23,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.flowcontrol.v1.ResourcePolicyRule"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.flowcontrol.v1.ResourcePolicyRule"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -34,7 +34,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.flowcontrol.v1.Subject"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.flowcontrol.v1.Subject"
       },
       "x-kubernetes-list-type": "atomic"
     }

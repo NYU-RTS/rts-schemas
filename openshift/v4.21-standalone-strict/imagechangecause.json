@@ -4,7 +4,7 @@
   "properties": {
     "fromRef": {
       "description": "fromRef contains detailed information about an image that triggered a build.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
     },
     "imageID": {
       "description": "imageID is the ID of the image that triggered a new build.",

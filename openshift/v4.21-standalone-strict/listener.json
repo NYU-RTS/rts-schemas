@@ -22,7 +22,7 @@
     },
     "metadata": {
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
       "description": "Exposes a set of pods to the outside world.\n\nEssentially a Stackable extension of a Kubernetes [`Service`]. Compared to [`Service`], [`Listener`] changes three things: 1. It uses a cluster-level policy object ([`ListenerClass`]) to define how exactly the exposure works 2. It has a consistent API for reading back the exposed address(es) of the service 3. The [`Pod`] must mount a [`Volume`] referring to the `Listener`, which also allows us to control stickiness",

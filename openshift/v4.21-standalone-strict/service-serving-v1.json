@@ -18,7 +18,7 @@
     },
     "metadata": {
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
       "description": "ServiceSpec represents the configuration for the Service object.\nA Service's specification is the union of the specifications for a Route\nand Configuration.  The Service restricts what can be expressed in these\nfields, e.g. the Route must reference the provided Configuration;\nhowever, these limitations also enable friendlier defaulting,\ne.g. Route never needs a Configuration name, and may be defaulted to\nthe appropriate \"run latest\" spec.",

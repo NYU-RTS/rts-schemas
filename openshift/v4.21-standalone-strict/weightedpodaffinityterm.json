@@ -8,7 +8,7 @@
   "properties": {
     "podAffinityTerm": {
       "description": "Required. A pod affinity term, associated with the corresponding weight.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.PodAffinityTerm"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.PodAffinityTerm"
     },
     "weight": {
       "description": "weight associated with matching the corresponding podAffinityTerm, in the range 1-100.",

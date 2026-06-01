@@ -28,7 +28,7 @@
     },
     "externalCertificate": {
       "description": "externalCertificate provides certificate contents as a secret reference. This should be a single serving certificate, not a certificate chain. Do not include a CA certificate. The secret referenced should be present in the same namespace as that of the Route. Forbidden when `certificate` is set.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.route.v1.LocalObjectReference"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.route.v1.LocalObjectReference"
     },
     "insecureEdgeTerminationPolicy": {
       "description": "insecureEdgeTerminationPolicy indicates the desired behavior for insecure connections to a route. While each router may make its own decisions on which ports to expose, this is normally port 80.\n\nIf a route does not specify insecureEdgeTerminationPolicy, then the default behavior is \"None\".\n\n* Allow - traffic is sent to the server on the insecure port (edge/reencrypt terminations only).\n\n* None - no traffic is allowed on the insecure port (default).\n\n* Redirect - clients are redirected to the secure port.",

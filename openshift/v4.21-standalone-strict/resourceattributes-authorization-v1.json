@@ -4,7 +4,7 @@
   "properties": {
     "fieldSelector": {
       "description": "fieldSelector describes the limitation on access based on field.  It can only limit access, not broaden it.\n\nThis field  is alpha-level. To use this field, you must enable the `AuthorizeWithSelectors` feature gate (disabled by default).",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.authorization.v1.FieldSelectorAttributes"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.authorization.v1.FieldSelectorAttributes"
     },
     "group": {
       "description": "Group is the API Group of the Resource.  \"*\" means all.",
@@ -15,7 +15,7 @@
     },
     "labelSelector": {
       "description": "labelSelector describes the limitation on access based on labels.  It can only limit access, not broaden it.\n\nThis field  is alpha-level. To use this field, you must enable the `AuthorizeWithSelectors` feature gate (disabled by default).",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.authorization.v1.LabelSelectorAttributes"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.authorization.v1.LabelSelectorAttributes"
     },
     "name": {
       "description": "Name is the name of the resource being requested for a \"get\" or deleted for a \"delete\". \"\" (empty) means all.",

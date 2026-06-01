@@ -4,7 +4,7 @@
   "properties": {
     "revision": {
       "description": "revision is an optional field that stores the git source revision information of the generic webhook trigger when it is available.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.build.v1.SourceRevision"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.build.v1.SourceRevision"
     },
     "secret": {
       "description": "secret is the obfuscated webhook secret that triggered a build.",

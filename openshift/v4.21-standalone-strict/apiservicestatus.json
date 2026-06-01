@@ -9,7 +9,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIServiceCondition"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIServiceCondition"
       },
       "x-kubernetes-list-map-keys": [
         "type"

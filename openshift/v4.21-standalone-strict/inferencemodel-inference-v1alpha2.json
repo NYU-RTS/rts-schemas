@@ -18,7 +18,7 @@
     },
     "metadata": {
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
       "description": "InferenceModelSpec represents the desired state of a specific model use case. This resource is\nmanaged by the \"Inference Workload Owner\" persona.\n\nThe Inference Workload Owner persona is someone that trains, verifies, and\nleverages a large language model from a model frontend, drives the lifecycle\nand rollout of new versions of those models, and defines the specific\nperformance and latency goals for the model. These workloads are\nexpected to operate within an InferencePool sharing compute capacity with other\nInferenceModels, defined by the Inference Platform Admin.\n\nInferenceModel's modelName (not the ObjectMeta name) is unique for a given InferencePool,\nif the name is reused, an error will be shown on the status of a\nInferenceModel that attempted to reuse. The oldest InferenceModel, based on\ncreation timestamp, will be selected to remain valid. In the event of a race\ncondition, one will be selected at random.",

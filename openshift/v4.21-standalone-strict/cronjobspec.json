@@ -25,7 +25,7 @@
     },
     "jobTemplate": {
       "description": "Specifies the job that will be created when executing a CronJob.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.batch.v1.JobTemplateSpec"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.batch.v1.JobTemplateSpec"
     },
     "schedule": {
       "description": "The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron.",

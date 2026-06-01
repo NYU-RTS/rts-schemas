@@ -11,7 +11,7 @@
   "properties": {
     "from": {
       "description": "From points to a ReplicationController which is a deployment.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
     },
     "includeReplicationMeta": {
       "description": "IncludeReplicationMeta specifies whether to include the replica count and selector.",

@@ -21,11 +21,11 @@
     },
     "spec": {
       "description": "Spec adds information about how to conduct the check",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.authorization.v1.SubjectRulesReviewSpec"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.authorization.v1.SubjectRulesReviewSpec"
     },
     "status": {
       "description": "Status is completed by the server to tell which permissions you have",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.authorization.v1.SubjectRulesReviewStatus"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.authorization.v1.SubjectRulesReviewStatus"
     }
   },
   "x-kubernetes-group-version-kind": [

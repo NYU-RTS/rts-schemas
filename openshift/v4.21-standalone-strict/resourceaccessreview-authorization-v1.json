@@ -21,7 +21,7 @@
     },
     "content": {
       "description": "Content is the actual content of the request for create and update",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
     },
     "isNonResourceURL": {
       "description": "IsNonResourceURL is true if this is a request for a non-resource URL (outside of the resource hierarchy)",

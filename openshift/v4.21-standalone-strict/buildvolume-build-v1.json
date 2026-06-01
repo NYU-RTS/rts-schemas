@@ -14,7 +14,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildVolumeMount"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildVolumeMount"
       },
       "x-kubernetes-list-map-keys": [
         "destinationPath"
@@ -32,7 +32,7 @@
     },
     "source": {
       "description": "source represents the location and type of the mounted volume.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildVolumeSource"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildVolumeSource"
     }
   },
   "$schema": "http://json-schema.org/schema#"

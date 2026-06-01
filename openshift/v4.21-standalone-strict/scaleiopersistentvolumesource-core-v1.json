@@ -34,7 +34,7 @@
     },
     "secretRef": {
       "description": "secretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.SecretReference"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.SecretReference"
     },
     "sslEnabled": {
       "description": "sslEnabled is the flag to enable/disable SSL communication with Gateway, default false",

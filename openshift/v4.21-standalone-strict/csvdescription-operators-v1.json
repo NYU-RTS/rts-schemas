@@ -13,10 +13,10 @@
       "x-kubernetes-list-type": "map"
     },
     "apiservicedefinitions": {
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.operator-framework.api.pkg.operators.v1alpha1.APIServiceDefinitions"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.operator-framework.api.pkg.operators.v1alpha1.APIServiceDefinitions"
     },
     "customresourcedefinitions": {
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.operator-framework.api.pkg.operators.v1alpha1.CustomResourceDefinitions"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.operator-framework.api.pkg.operators.v1alpha1.CustomResourceDefinitions"
     },
     "description": {
       "description": "LongDescription is the CSV's description",
@@ -39,7 +39,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.Icon"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.Icon"
       },
       "x-kubernetes-list-type": "set"
     },
@@ -50,7 +50,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.operator-framework.api.pkg.operators.v1alpha1.InstallMode"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.operator-framework.api.pkg.operators.v1alpha1.InstallMode"
       },
       "x-kubernetes-list-type": "set"
     },
@@ -73,7 +73,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.AppLink"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.AppLink"
       },
       "x-kubernetes-list-type": "set"
     },
@@ -83,7 +83,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.Maintainer"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.Maintainer"
       },
       "x-kubernetes-list-type": "set"
     },
@@ -106,12 +106,12 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionKind"
+        "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionKind"
       }
     },
     "provider": {
       "description": "Provider is the CSV's provider",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.AppLink"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.operator-framework.operator-lifecycle-manager.pkg.package-server.apis.operators.v1.AppLink"
     },
     "relatedImages": {
       "description": "List of related images",
@@ -128,7 +128,7 @@
     },
     "version": {
       "description": "Version is the CSV's semantic version",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/com.github.operator-framework.api.pkg.lib.version.OperatorVersion"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/com.github.operator-framework.api.pkg.lib.version.OperatorVersion"
     }
   },
   "$schema": "http://json-schema.org/schema#"

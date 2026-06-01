@@ -21,7 +21,7 @@
     },
     "valueFrom": {
       "description": "Source for the environment variable's value. Cannot be used if value is not empty.",
-      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.api.core.v1.EnvVarSource"
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/v4.21-standalone-strict/_definitions.json#/definitions/io.k8s.api.core.v1.EnvVarSource"
     }
   },
   "$schema": "http://json-schema.org/schema#"
