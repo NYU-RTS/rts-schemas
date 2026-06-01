@@ -1,0 +1,69 @@
+{
+  "description": "Auto-generated derived type for S3ConnectionSpec via `CustomResource`",
+  "type": "object",
+  "title": "S3Connection",
+  "required": [
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "S3 connection definition as CRD.",
+      "type": "object",
+      "properties": {
+        "accessStyle": {
+          "description": "Which access style to use. Defaults to virtual hosted-style as most of the data products out there. Have a look at the official documentation on <https://docs.aws.amazon.com/AmazonS3/latest/userguide/VirtualHosting.html>",
+          "enum": [
+            "Path",
+            "VirtualHosted"
+          ]
+        },
+        "credentials": {
+          "description": "If the S3 uses authentication you have to specify you S3 credentials. In the most cases a SecretClass providing `accessKey` and `secretKey` is sufficient.",
+          "required": [
+            "secretClass"
+          ]
+        },
+        "host": {
+          "description": "Hostname of the S3 server without any protocol or port"
+        },
+        "port": {
+          "description": "Port the S3 server listens on. If not specified the products will determine the port to use.",
+          "format": "uint16",
+          "minimum": 0
+        },
+        "tls": {
+          "description": "If you want to use TLS when talking to S3 you can enable TLS encrypted communication with this setting.",
+          "required": [
+            "verification"
+          ]
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "s3.stackable.tech",
+      "kind": "S3Connection",
+      "version": "v1alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

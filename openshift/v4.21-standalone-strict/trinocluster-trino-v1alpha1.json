@@ -1,0 +1,224 @@
+{
+  "description": "Auto-generated derived type for TrinoClusterSpec via `CustomResource`",
+  "type": "object",
+  "title": "TrinoCluster",
+  "required": [
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "type": "object",
+      "required": [
+        "clusterConfig",
+        "image"
+      ],
+      "properties": {
+        "clusterConfig": {
+          "description": "Trino cluster configuration options.",
+          "type": "object",
+          "required": [
+            "catalogLabelSelector"
+          ],
+          "properties": {
+            "authentication": {
+              "description": "Authentication options for Trino.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "object",
+                "required": [
+                  "authenticationClass"
+                ],
+                "properties": {
+                  "authenticationClass": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "authorization": {
+              "description": "Authorization options for Trino."
+            },
+            "catalogLabelSelector": {
+              "description": "[LabelSelector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors) selecting the Catalogs to include in the Trino instance.",
+              "type": "object",
+              "properties": {
+                "matchExpressions": {
+                  "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                    "type": "object",
+                    "required": [
+                      "key",
+                      "operator"
+                    ],
+                    "properties": {
+                      "key": {
+                        "description": "key is the label key that the selector applies to.",
+                        "type": "string"
+                      },
+                      "operator": {
+                        "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                        "type": "string"
+                      },
+                      "values": {
+                        "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "matchLabels": {
+                  "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            },
+            "listenerClass": {
+              "description": "This field controls which type of Service the Operator creates for this TrinoCluster:\n\n* cluster-internal: Use a ClusterIP service\n\n* external-unstable: Use a NodePort service\n\n* external-stable: Use a LoadBalancer service\n\nThis is a temporary solution with the goal to keep yaml manifests forward compatible. In the future, this setting will control which ListenerClass <https://docs.stackable.tech/home/stable/listener-operator/listenerclass.html> will be used to expose the service, and ListenerClass names will stay the same, allowing for a non-breaking change.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "cluster-internal",
+                "external-unstable",
+                "external-stable"
+              ]
+            },
+            "tls": {
+              "description": "TLS configuration options for server and internal communication.",
+              "type": "object",
+              "properties": {
+                "internalSecretClass": {
+                  "description": "Only affects internal communication. Use mutual verification between Trino nodes This setting controls: - Which cert the servers should use to authenticate themselves against other servers - Which ca.crt to use when validating the other server"
+                },
+                "serverSecretClass": {
+                  "description": "Only affects client connections. This setting controls: - If TLS encryption is used at all - Which cert the servers should use to authenticate themselves against the client"
+                }
+              }
+            },
+            "vectorAggregatorConfigMapName": {
+              "description": "Name of the Vector aggregator discovery ConfigMap. It must contain the key `ADDRESS` with the address of the Vector aggregator."
+            }
+          }
+        },
+        "clusterOperation": {
+          "description": "Cluster operations like pause reconciliation or cluster stop.",
+          "type": "object",
+          "properties": {
+            "reconciliationPaused": {
+              "description": "Flag to stop cluster reconciliation by the operator. This means that all changes in the custom resource spec are ignored until this flag is set to false or removed. The operator will however still watch the deployed resources at the time and update the custom resource status field. If applied at the same time with `stopped`, `reconciliationPaused` will take precedence over `stopped` and stop the reconciliation immediately.",
+              "type": "boolean"
+            },
+            "stopped": {
+              "description": "Flag to stop the cluster. This means all deployed resources (e.g. Services, StatefulSets, ConfigMaps) are kept but all deployed Pods (e.g. replicas from a StatefulSet) are scaled to 0 and therefore stopped and removed. If applied at the same time with `reconciliationPaused`, the latter will pause reconciliation and `stopped` will take no effect until `reconciliationPaused` is set to false or removed.",
+              "type": "boolean"
+            }
+          }
+        },
+        "coordinators": {
+          "description": "Settings for the Coordinator Role/Process.",
+          "required": [
+            "roleGroups"
+          ]
+        },
+        "image": {
+          "description": "Trino product image to use.",
+          "type": "object",
+          "properties": {
+            "custom": {
+              "description": "Overwrite the docker image. Specify the full docker image name, e.g. `docker.stackable.tech/stackable/superset:1.4.1-stackable2.1.0`",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "productVersion": {
+              "description": "Version of the product, e.g. `1.4.1`.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "pullPolicy": {
+              "description": "[Pull policy](https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy) used when pulling the Images",
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "IfNotPresent",
+                "Always",
+                "Never"
+              ]
+            },
+            "pullSecrets": {
+              "description": "[Image pull secrets](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) to pull images from a private registry"
+            },
+            "repo": {
+              "description": "Name of the docker repo, e.g. `docker.stackable.tech/stackable`"
+            },
+            "stackableVersion": {
+              "description": "Stackable version of the product, e.g. `23.4`, `23.4.1` or `0.0.0-dev`. If not specified, the operator will use its own version, e.g. `23.4.1`. When using a nightly operator or a pr version, it will use the nightly `0.0.0-dev` image."
+            }
+          }
+        },
+        "workers": {
+          "description": "Settings for the Worker Role/Process.",
+          "required": [
+            "roleGroups"
+          ]
+        }
+      }
+    },
+    "status": {}
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "trino.stackable.tech",
+      "kind": "TrinoCluster",
+      "version": "v1alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

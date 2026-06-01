@@ -1,0 +1,205 @@
+{
+  "type": "object",
+  "required": [
+    "metadata",
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "type": "object",
+      "properties": {
+        "application": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "compressionMode": {
+          "enum": [
+            "none",
+            "passive",
+            "aggressive",
+            "force",
+            ""
+          ]
+        },
+        "crushRoot": {},
+        "deviceClass": {},
+        "enableCrushUpdates": {},
+        "enableRBDStats": {
+          "type": "boolean"
+        },
+        "erasureCoded": {
+          "type": "object",
+          "required": [
+            "codingChunks",
+            "dataChunks"
+          ],
+          "properties": {
+            "algorithm": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "isa",
+                "jerasure"
+              ]
+            },
+            "codingChunks": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "dataChunks": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "failureDomain": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mirroring": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "mode": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "pool",
+                "image",
+                "init-only"
+              ]
+            },
+            "peers": {},
+            "snapshotSchedules": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "object",
+                "properties": {
+                  "interval": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "path": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "startTime": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            ".rgw.root",
+            ".nfs",
+            ".mgr"
+          ]
+        },
+        "parameters": {
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "x-kubernetes-preserve-unknown-fields": true
+        },
+        "quotas": {},
+        "replicated": {
+          "type": "object",
+          "required": [
+            "size"
+          ],
+          "properties": {
+            "hybridStorage": {
+              "required": [
+                "primaryDeviceClass",
+                "secondaryDeviceClass"
+              ]
+            },
+            "replicasPerFailureDomain": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "requireSafeReplicaSize": {
+              "type": "boolean"
+            },
+            "size": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "subFailureDomain": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "targetSizeRatio": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "statusCheck": {
+          "x-kubernetes-preserve-unknown-fields": true
+        }
+      }
+    },
+    "status": {
+      "x-kubernetes-preserve-unknown-fields": true
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "ceph.rook.io",
+      "kind": "CephBlockPool",
+      "version": "v1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

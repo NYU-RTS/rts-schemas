@@ -1,0 +1,2763 @@
+{
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "type": "object",
+      "required": [
+        "hostname"
+      ],
+      "properties": {
+        "containers": {
+          "description": "Templates for Console instance containers. The templates allow users to specify how the Kubernetes resources are generated.\n",
+          "type": "object",
+          "properties": {
+            "api": {
+              "description": "Template for the Console API server container. The template allows users to specify how the Kubernetes resources are generated.",
+              "type": "object",
+              "properties": {
+                "spec": {
+                  "description": "Specification to be applied to the resulting container.",
+                  "type": "object",
+                  "properties": {
+                    "env": {
+                      "description": "Environment variables which should be applied to the container.",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "value": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "valueFrom": {
+                            "type": "object",
+                            "properties": {
+                              "configMapKeyRef": {
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "optional": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              },
+                              "fieldRef": {
+                                "type": "object",
+                                "properties": {
+                                  "apiVersion": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "fieldPath": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "resourceFieldRef": {
+                                "type": "object",
+                                "properties": {
+                                  "containerName": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "divisor": {
+                                    "x-kubernetes-int-or-string": true
+                                  },
+                                  "resource": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "secretKeyRef": {
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "optional": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "image": {
+                      "description": "Container image to be used for the container",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "resources": {
+                      "description": "CPU and memory resources to reserve.",
+                      "type": "object",
+                      "properties": {
+                        "claims": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "request": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "limits": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "x-kubernetes-int-or-string": true
+                          }
+                        },
+                        "requests": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "x-kubernetes-int-or-string": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "ui": {
+              "description": "Template for the Console UI server container. The template allows users to specify how the Kubernetes resources are generated.",
+              "type": "object",
+              "properties": {
+                "spec": {
+                  "description": "Specification to be applied to the resulting container.",
+                  "type": "object",
+                  "properties": {
+                    "env": {
+                      "description": "Environment variables which should be applied to the container.",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "value": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "valueFrom": {
+                            "type": "object",
+                            "properties": {
+                              "configMapKeyRef": {
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "optional": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              },
+                              "fieldRef": {
+                                "type": "object",
+                                "properties": {
+                                  "apiVersion": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "fieldPath": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "resourceFieldRef": {
+                                "type": "object",
+                                "properties": {
+                                  "containerName": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "divisor": {
+                                    "x-kubernetes-int-or-string": true
+                                  },
+                                  "resource": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "secretKeyRef": {
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "optional": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "image": {
+                      "description": "Container image to be used for the container",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "resources": {
+                      "description": "CPU and memory resources to reserve.",
+                      "type": "object",
+                      "properties": {
+                        "claims": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "request": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "limits": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "x-kubernetes-int-or-string": true
+                          }
+                        },
+                        "requests": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "x-kubernetes-int-or-string": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "env": {
+          "description": "DEPRECATED: Environment variables which should be applied to the API container. Use `containers` property instead.\n",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "valueFrom": {
+                "type": "object",
+                "properties": {
+                  "configMapKeyRef": {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "name": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "optional": {
+                        "type": "boolean"
+                      }
+                    }
+                  },
+                  "fieldRef": {
+                    "type": "object",
+                    "properties": {
+                      "apiVersion": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "fieldPath": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "resourceFieldRef": {
+                    "type": "object",
+                    "properties": {
+                      "containerName": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "divisor": {
+                        "x-kubernetes-int-or-string": true
+                      },
+                      "resource": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "secretKeyRef": {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "name": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "optional": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "hostname": {
+          "type": "string"
+        },
+        "images": {
+          "description": "DEPRECATED: Image overrides to be used for the API and UI servers. Use `containers` property instead.\n",
+          "type": "object",
+          "properties": {
+            "api": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "ui": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "kafkaClusters": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "adminProperties": {
+                "type": "object",
+                "properties": {
+                  "values": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "value": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "valuesFrom": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "configMapRef": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "prefix": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "secretRef": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      },
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "One of `configMapRef` or `secretRef` is required",
+                          "rule": "has(self.configMapRef) || has(self.secretRef)"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "consumerProperties": {
+                "type": "object",
+                "properties": {
+                  "values": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "value": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "valuesFrom": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "configMapRef": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "prefix": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "secretRef": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      },
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "One of `configMapRef` or `secretRef` is required",
+                          "rule": "has(self.configMapRef) || has(self.secretRef)"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "credentials": {
+                "type": "object",
+                "properties": {
+                  "kafkaUser": {
+                    "description": "Reference to a Strimzi KafkaUser resource",
+                    "type": "object",
+                    "required": [
+                      "name"
+                    ],
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "namespace": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "x-kubernetes-validations": [
+                  {
+                    "message": "kafkaUser is required",
+                    "rule": "has(self.kafkaUser)"
+                  }
+                ]
+              },
+              "id": {
+                "description": "Identifier to be used for this Kafka cluster in the console. When the console is connected to Kubernetes and a Strimzi Kafka custom resource may be discovered using the name and namespace properties, this property is optional. Otherwise, the Kafka cluster identifier published in the Kafka resource's status will be used. If namespace is not given or the console or Kubernetes is not in use, and this property is not provided, the ID will default to the name.\n\nWhen provided, this property will override the Kafka cluster ID available in the Kafka resource's status.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "listener": {
+                "description": "The name of the listener in the Strimzi Kafka Kubernetes resource that should be used by the console to establish connections.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "metricsSource": {
+                "description": "Name of a configured Prometheus metrics source to use for this Kafka cluster to display resource utilization charts in the console.\n",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "name": {
+                "description": "The name of the Kafka cluster. When the console is connected to Kubernetes, a Strimzi Kafka custom resource may be discovered using this property together with the namespace property. In any case, this property will be displayed in the console for the Kafka cluster's name.",
+                "type": "string"
+              },
+              "namespace": {
+                "description": "The namespace of the Kafka cluster. When the console is connected to Kubernetes, a Strimzi Kafka custom resource may be discovered using this property together with the name property.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "producerProperties": {
+                "type": "object",
+                "properties": {
+                  "values": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "value": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "valuesFrom": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "configMapRef": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "prefix": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "secretRef": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      },
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "One of `configMapRef` or `secretRef` is required",
+                          "rule": "has(self.configMapRef) || has(self.secretRef)"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "properties": {
+                "type": "object",
+                "properties": {
+                  "values": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "value": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "valuesFrom": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "configMapRef": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "prefix": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "secretRef": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      },
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "One of `configMapRef` or `secretRef` is required",
+                          "rule": "has(self.configMapRef) || has(self.secretRef)"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "schemaRegistry": {
+                "description": "Name of a configured Apicurio Registry instance to use for serializing and de-serializing records written to or read from this Kafka cluster.\n",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "security": {
+                "description": "Security configuration to be applied only to this Kafka cluster. This includes the configuration of subjects (e.g. non-OIDC Kafka users), role policies for this cluster's resources, and audit rules for access to cluster's resources.\n",
+                "type": "object",
+                "properties": {
+                  "audit": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "decision",
+                        "privileges",
+                        "resources"
+                      ],
+                      "properties": {
+                        "decision": {
+                          "type": "string",
+                          "enum": [
+                            "ALL",
+                            "ALLOWED",
+                            "DENIED"
+                          ]
+                        },
+                        "privileges": {
+                          "type": "array",
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "enum": [
+                              "ALL",
+                              "CREATE",
+                              "DELETE",
+                              "GET",
+                              "LIST",
+                              "UPDATE"
+                            ]
+                          }
+                        },
+                        "resourceNames": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "roles": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "name"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "rules": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "privileges",
+                              "resources"
+                            ],
+                            "properties": {
+                              "privileges": {
+                                "type": "array",
+                                "items": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ],
+                                  "enum": [
+                                    "ALL",
+                                    "CREATE",
+                                    "DELETE",
+                                    "GET",
+                                    "LIST",
+                                    "UPDATE"
+                                  ]
+                                }
+                              },
+                              "resourceNames": {
+                                "type": [
+                                  "array",
+                                  "null"
+                                ],
+                                "items": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "resources": {
+                                "type": "array",
+                                "items": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "subjects": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "include"
+                      ],
+                      "properties": {
+                        "claim": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "include": {
+                          "type": "array",
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "roleNames": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "x-kubernetes-validations": [
+              {
+                "message": "Property `listener` may not be used when `namespace` is omitted",
+                "rule": "!has(self.listener) || has(self.__namespace__)"
+              }
+            ]
+          }
+        },
+        "metricsSources": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "type"
+            ],
+            "properties": {
+              "authentication": {
+                "type": "object",
+                "properties": {
+                  "basic": {
+                    "type": "object",
+                    "required": [
+                      "password",
+                      "username"
+                    ],
+                    "properties": {
+                      "password": {
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "description": "Literal string to be used for this value",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "valueFrom": {
+                            "description": "Reference to an external source to use for this value",
+                            "type": "object",
+                            "properties": {
+                              "configMapKeyRef": {
+                                "description": "Reference to a ConfigMap entry value",
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "optional": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              },
+                              "secretKeyRef": {
+                                "description": "Reference to a Secret entry value",
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "optional": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "username": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "bearer": {
+                    "type": "object",
+                    "required": [
+                      "token"
+                    ],
+                    "properties": {
+                      "token": {
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "description": "Literal string to be used for this value",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "valueFrom": {
+                            "description": "Reference to an external source to use for this value",
+                            "type": "object",
+                            "properties": {
+                              "configMapKeyRef": {
+                                "description": "Reference to a ConfigMap entry value",
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "optional": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              },
+                              "secretKeyRef": {
+                                "description": "Reference to a Secret entry value",
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "optional": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "oidc": {
+                    "type": "object",
+                    "required": [
+                      "clientId"
+                    ],
+                    "properties": {
+                      "absoluteExpiresIn": {
+                        "type": "boolean"
+                      },
+                      "authServerUrl": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "clientId": {
+                        "type": "string"
+                      },
+                      "clientSecret": {
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "description": "Literal string to be used for this value",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "valueFrom": {
+                            "description": "Reference to an external source to use for this value",
+                            "type": "object",
+                            "properties": {
+                              "configMapKeyRef": {
+                                "description": "Reference to a ConfigMap entry value",
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "optional": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              },
+                              "secretKeyRef": {
+                                "description": "Reference to a Secret entry value",
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "optional": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "grantOptions": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "grantType": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "enum": [
+                          "CLIENT",
+                          "PASSWORD"
+                        ]
+                      },
+                      "method": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "enum": [
+                          "BASIC",
+                          "POST"
+                        ]
+                      },
+                      "scopes": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "tokenPath": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "trustStore": {
+                        "type": "object",
+                        "required": [
+                          "content",
+                          "type"
+                        ],
+                        "properties": {
+                          "alias": {
+                            "description": "Alias to select the appropriate certificate when multiple certificates are included.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "content": {
+                            "description": "Content of the trust store",
+                            "type": "object",
+                            "properties": {
+                              "value": {
+                                "description": "Literal string to be used for this value",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "valueFrom": {
+                                "description": "Reference to an external source to use for this value",
+                                "type": "object",
+                                "properties": {
+                                  "configMapKeyRef": {
+                                    "description": "Reference to a ConfigMap entry value",
+                                    "type": "object",
+                                    "properties": {
+                                      "key": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "name": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "optional": {
+                                        "type": "boolean"
+                                      }
+                                    }
+                                  },
+                                  "secretKeyRef": {
+                                    "description": "Reference to a Secret entry value",
+                                    "type": "object",
+                                    "properties": {
+                                      "key": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "name": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "optional": {
+                                        "type": "boolean"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "password": {
+                            "description": "Content used to access the trust store, if necessary",
+                            "type": "object",
+                            "properties": {
+                              "value": {
+                                "description": "Literal string to be used for this value",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "valueFrom": {
+                                "description": "Reference to an external source to use for this value",
+                                "type": "object",
+                                "properties": {
+                                  "configMapKeyRef": {
+                                    "description": "Reference to a ConfigMap entry value",
+                                    "type": "object",
+                                    "properties": {
+                                      "key": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "name": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "optional": {
+                                        "type": "boolean"
+                                      }
+                                    }
+                                  },
+                                  "secretKeyRef": {
+                                    "description": "Reference to a Secret entry value",
+                                    "type": "object",
+                                    "properties": {
+                                      "key": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "name": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "optional": {
+                                        "type": "boolean"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "JKS",
+                              "PEM",
+                              "PKCS12"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "password": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "token": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "username": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "x-kubernetes-validations": [
+                  {
+                    "message": "One of `basic`, `bearer`, or `oidc` must be provided",
+                    "rule": "has(self.basic) || has(self.bearer) || has(self.oidc)"
+                  }
+                ]
+              },
+              "name": {
+                "type": "string"
+              },
+              "trustStore": {
+                "description": "Trust store configuration for when the metrics source uses TLS certificates signed by an unknown CA.\n",
+                "type": "object",
+                "required": [
+                  "content",
+                  "type"
+                ],
+                "properties": {
+                  "alias": {
+                    "description": "Alias to select the appropriate certificate when multiple certificates are included.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "content": {
+                    "description": "Content of the trust store",
+                    "type": "object",
+                    "properties": {
+                      "value": {
+                        "description": "Literal string to be used for this value",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "valueFrom": {
+                        "description": "Reference to an external source to use for this value",
+                        "type": "object",
+                        "properties": {
+                          "configMapKeyRef": {
+                            "description": "Reference to a ConfigMap entry value",
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "name": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "optional": {
+                                "type": "boolean"
+                              }
+                            }
+                          },
+                          "secretKeyRef": {
+                            "description": "Reference to a Secret entry value",
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "name": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "optional": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "password": {
+                    "description": "Content used to access the trust store, if necessary",
+                    "type": "object",
+                    "properties": {
+                      "value": {
+                        "description": "Literal string to be used for this value",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "valueFrom": {
+                        "description": "Reference to an external source to use for this value",
+                        "type": "object",
+                        "properties": {
+                          "configMapKeyRef": {
+                            "description": "Reference to a ConfigMap entry value",
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "name": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "optional": {
+                                "type": "boolean"
+                              }
+                            }
+                          },
+                          "secretKeyRef": {
+                            "description": "Reference to a Secret entry value",
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "name": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "optional": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "JKS",
+                      "PEM",
+                      "PKCS12"
+                    ]
+                  }
+                }
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "embedded",
+                  "openshift-monitoring",
+                  "standalone"
+                ]
+              },
+              "url": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "schemaRegistries": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "url"
+            ],
+            "properties": {
+              "authentication": {
+                "type": "object",
+                "properties": {
+                  "basic": {
+                    "type": "object",
+                    "required": [
+                      "password",
+                      "username"
+                    ],
+                    "properties": {
+                      "password": {
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "description": "Literal string to be used for this value",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "valueFrom": {
+                            "description": "Reference to an external source to use for this value",
+                            "type": "object",
+                            "properties": {
+                              "configMapKeyRef": {
+                                "description": "Reference to a ConfigMap entry value",
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "optional": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              },
+                              "secretKeyRef": {
+                                "description": "Reference to a Secret entry value",
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "optional": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "username": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "bearer": {
+                    "type": "object",
+                    "required": [
+                      "token"
+                    ],
+                    "properties": {
+                      "token": {
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "description": "Literal string to be used for this value",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "valueFrom": {
+                            "description": "Reference to an external source to use for this value",
+                            "type": "object",
+                            "properties": {
+                              "configMapKeyRef": {
+                                "description": "Reference to a ConfigMap entry value",
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "optional": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              },
+                              "secretKeyRef": {
+                                "description": "Reference to a Secret entry value",
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "optional": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "oidc": {
+                    "type": "object",
+                    "required": [
+                      "clientId"
+                    ],
+                    "properties": {
+                      "absoluteExpiresIn": {
+                        "type": "boolean"
+                      },
+                      "authServerUrl": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "clientId": {
+                        "type": "string"
+                      },
+                      "clientSecret": {
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "description": "Literal string to be used for this value",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "valueFrom": {
+                            "description": "Reference to an external source to use for this value",
+                            "type": "object",
+                            "properties": {
+                              "configMapKeyRef": {
+                                "description": "Reference to a ConfigMap entry value",
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "optional": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              },
+                              "secretKeyRef": {
+                                "description": "Reference to a Secret entry value",
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "optional": {
+                                    "type": "boolean"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "grantOptions": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "grantType": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "enum": [
+                          "CLIENT",
+                          "PASSWORD"
+                        ]
+                      },
+                      "method": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "enum": [
+                          "BASIC",
+                          "POST"
+                        ]
+                      },
+                      "scopes": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "tokenPath": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "trustStore": {
+                        "type": "object",
+                        "required": [
+                          "content",
+                          "type"
+                        ],
+                        "properties": {
+                          "alias": {
+                            "description": "Alias to select the appropriate certificate when multiple certificates are included.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "content": {
+                            "description": "Content of the trust store",
+                            "type": "object",
+                            "properties": {
+                              "value": {
+                                "description": "Literal string to be used for this value",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "valueFrom": {
+                                "description": "Reference to an external source to use for this value",
+                                "type": "object",
+                                "properties": {
+                                  "configMapKeyRef": {
+                                    "description": "Reference to a ConfigMap entry value",
+                                    "type": "object",
+                                    "properties": {
+                                      "key": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "name": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "optional": {
+                                        "type": "boolean"
+                                      }
+                                    }
+                                  },
+                                  "secretKeyRef": {
+                                    "description": "Reference to a Secret entry value",
+                                    "type": "object",
+                                    "properties": {
+                                      "key": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "name": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "optional": {
+                                        "type": "boolean"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "password": {
+                            "description": "Content used to access the trust store, if necessary",
+                            "type": "object",
+                            "properties": {
+                              "value": {
+                                "description": "Literal string to be used for this value",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "valueFrom": {
+                                "description": "Reference to an external source to use for this value",
+                                "type": "object",
+                                "properties": {
+                                  "configMapKeyRef": {
+                                    "description": "Reference to a ConfigMap entry value",
+                                    "type": "object",
+                                    "properties": {
+                                      "key": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "name": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "optional": {
+                                        "type": "boolean"
+                                      }
+                                    }
+                                  },
+                                  "secretKeyRef": {
+                                    "description": "Reference to a Secret entry value",
+                                    "type": "object",
+                                    "properties": {
+                                      "key": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "name": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "optional": {
+                                        "type": "boolean"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "JKS",
+                              "PEM",
+                              "PKCS12"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "x-kubernetes-validations": [
+                  {
+                    "message": "One of `basic`, `bearer`, or `oidc` must be provided",
+                    "rule": "has(self.basic) || has(self.bearer) || has(self.oidc)"
+                  }
+                ]
+              },
+              "name": {
+                "description": "Name of the Apicurio Registry. The name may be referenced by Kafka clusters configured in the console to indicate that a particular registry is to be used for message deserialization when browsing topics within that cluster.\n",
+                "type": "string"
+              },
+              "trustStore": {
+                "description": "Trust store configuration for when the schema registry uses TLS certificates signed by an unknown CA.\n",
+                "type": "object",
+                "required": [
+                  "content",
+                  "type"
+                ],
+                "properties": {
+                  "alias": {
+                    "description": "Alias to select the appropriate certificate when multiple certificates are included.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "content": {
+                    "description": "Content of the trust store",
+                    "type": "object",
+                    "properties": {
+                      "value": {
+                        "description": "Literal string to be used for this value",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "valueFrom": {
+                        "description": "Reference to an external source to use for this value",
+                        "type": "object",
+                        "properties": {
+                          "configMapKeyRef": {
+                            "description": "Reference to a ConfigMap entry value",
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "name": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "optional": {
+                                "type": "boolean"
+                              }
+                            }
+                          },
+                          "secretKeyRef": {
+                            "description": "Reference to a Secret entry value",
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "name": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "optional": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "password": {
+                    "description": "Content used to access the trust store, if necessary",
+                    "type": "object",
+                    "properties": {
+                      "value": {
+                        "description": "Literal string to be used for this value",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "valueFrom": {
+                        "description": "Reference to an external source to use for this value",
+                        "type": "object",
+                        "properties": {
+                          "configMapKeyRef": {
+                            "description": "Reference to a ConfigMap entry value",
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "name": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "optional": {
+                                "type": "boolean"
+                              }
+                            }
+                          },
+                          "secretKeyRef": {
+                            "description": "Reference to a Secret entry value",
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "name": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "optional": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "JKS",
+                      "PEM",
+                      "PKCS12"
+                    ]
+                  }
+                }
+              },
+              "url": {
+                "description": "URL of the Apicurio Registry server API.",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": {
+          "type": "object",
+          "properties": {
+            "audit": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "object",
+                "required": [
+                  "decision",
+                  "privileges",
+                  "resources"
+                ],
+                "properties": {
+                  "decision": {
+                    "type": "string",
+                    "enum": [
+                      "ALL",
+                      "ALLOWED",
+                      "DENIED"
+                    ]
+                  },
+                  "privileges": {
+                    "type": "array",
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "enum": [
+                        "ALL",
+                        "CREATE",
+                        "DELETE",
+                        "GET",
+                        "LIST",
+                        "UPDATE"
+                      ]
+                    }
+                  },
+                  "resourceNames": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "resources": {
+                    "type": "array",
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "oidc": {
+              "type": "object",
+              "required": [
+                "authServerUrl",
+                "clientId",
+                "clientSecret"
+              ],
+              "properties": {
+                "authServerUrl": {
+                  "type": "string"
+                },
+                "clientId": {
+                  "type": "string"
+                },
+                "clientSecret": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "description": "Literal string to be used for this value",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "valueFrom": {
+                      "description": "Reference to an external source to use for this value",
+                      "type": "object",
+                      "properties": {
+                        "configMapKeyRef": {
+                          "description": "Reference to a ConfigMap entry value",
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "name": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "secretKeyRef": {
+                          "description": "Reference to a Secret entry value",
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "name": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "optional": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "issuer": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "trustStore": {
+                  "description": "Trust store configuration for when the OIDC provider uses TLS certificates signed by an unknown CA.\n",
+                  "type": "object",
+                  "required": [
+                    "content",
+                    "type"
+                  ],
+                  "properties": {
+                    "alias": {
+                      "description": "Alias to select the appropriate certificate when multiple certificates are included.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "content": {
+                      "description": "Content of the trust store",
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "description": "Literal string to be used for this value",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "valueFrom": {
+                          "description": "Reference to an external source to use for this value",
+                          "type": "object",
+                          "properties": {
+                            "configMapKeyRef": {
+                              "description": "Reference to a ConfigMap entry value",
+                              "type": "object",
+                              "properties": {
+                                "key": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "name": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "type": "boolean"
+                                }
+                              }
+                            },
+                            "secretKeyRef": {
+                              "description": "Reference to a Secret entry value",
+                              "type": "object",
+                              "properties": {
+                                "key": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "name": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "type": "boolean"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "password": {
+                      "description": "Content used to access the trust store, if necessary",
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "description": "Literal string to be used for this value",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "valueFrom": {
+                          "description": "Reference to an external source to use for this value",
+                          "type": "object",
+                          "properties": {
+                            "configMapKeyRef": {
+                              "description": "Reference to a ConfigMap entry value",
+                              "type": "object",
+                              "properties": {
+                                "key": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "name": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "type": "boolean"
+                                }
+                              }
+                            },
+                            "secretKeyRef": {
+                              "description": "Reference to a Secret entry value",
+                              "type": "object",
+                              "properties": {
+                                "key": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "name": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "optional": {
+                                  "type": "boolean"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "JKS",
+                        "PEM",
+                        "PKCS12"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "roles": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "rules": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "privileges",
+                        "resources"
+                      ],
+                      "properties": {
+                        "privileges": {
+                          "type": "array",
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "enum": [
+                              "ALL",
+                              "CREATE",
+                              "DELETE",
+                              "GET",
+                              "LIST",
+                              "UPDATE"
+                            ]
+                          }
+                        },
+                        "resourceNames": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "subjects": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "object",
+                "required": [
+                  "include"
+                ],
+                "properties": {
+                  "claim": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "include": {
+                    "type": "array",
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "roleNames": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "object",
+      "properties": {
+        "conditions": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "lastTransitionTime": {
+                "description": "Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "message": {
+                "description": "Human-readable message indicating details about the condition's last transition.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "reason": {
+                "description": "The reason for the condition's last transition (a single word in CamelCase).",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "status": {
+                "description": "The status of the condition, either True, False or Unknown.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "type": {
+                "description": "The unique identifier of a condition, used to distinguish between other conditions in the resource.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "observedGeneration": {
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "console.streamshub.github.com",
+      "kind": "Console",
+      "version": "v1alpha1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

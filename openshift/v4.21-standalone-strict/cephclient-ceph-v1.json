@@ -1,0 +1,109 @@
+{
+  "type": "object",
+  "required": [
+    "metadata",
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "type": "object",
+      "required": [
+        "caps"
+      ],
+      "properties": {
+        "caps": {
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "x-kubernetes-preserve-unknown-fields": true
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "removeSecret": {
+          "type": "boolean"
+        },
+        "secretName": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "x-kubernetes-validations": [
+            {
+              "message": "SecretName is immutable and cannot be changed",
+              "rule": "self == oldSelf"
+            }
+          ]
+        },
+        "security": {
+          "type": "object",
+          "properties": {
+            "cephx": {
+              "type": "object",
+              "properties": {
+                "keyGeneration": {
+                  "type": "integer",
+                  "format": "int32",
+                  "maximum": 4294967295,
+                  "minimum": 0,
+                  "x-kubernetes-validations": [
+                    {
+                      "message": "keyGeneration cannot be decreased",
+                      "rule": "self >= oldSelf"
+                    }
+                  ]
+                },
+                "keyRotationPolicy": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "",
+                    "Disabled",
+                    "KeyGeneration"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "status": {
+      "x-kubernetes-preserve-unknown-fields": true
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "ceph.rook.io",
+      "kind": "CephClient",
+      "version": "v1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

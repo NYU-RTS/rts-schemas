@@ -1,0 +1,233 @@
+{
+  "type": "object",
+  "required": [
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "https://raw.githubusercontent.com/NYU-RTS/rts-schemas/refs/heads/main/openshift/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "The specification of the Kafka Connector.",
+      "type": "object",
+      "properties": {
+        "alterOffsets": {
+          "description": "Configuration for altering offsets.",
+          "type": "object",
+          "required": [
+            "fromConfigMap"
+          ],
+          "properties": {
+            "fromConfigMap": {
+              "description": "Reference to the ConfigMap where the new offsets are stored.",
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "autoRestart": {
+          "description": "Automatic restart of connector and tasks configuration.",
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "description": "Whether automatic restart for failed connectors and tasks should be enabled or disabled.",
+              "type": "boolean"
+            },
+            "maxRestarts": {
+              "description": "The maximum number of connector restarts that the operator will try. If the connector remains in a failed state after reaching this limit, it must be restarted manually by the user. Defaults to an unlimited number of restarts.",
+              "type": "integer"
+            }
+          }
+        },
+        "class": {
+          "description": "The Class for the Kafka Connector.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "config": {
+          "description": "The Kafka Connector configuration. The following properties cannot be set: name, connector.class, tasks.max, connector.plugin.version.",
+          "x-kubernetes-preserve-unknown-fields": true
+        },
+        "listOffsets": {
+          "description": "Configuration for listing offsets.",
+          "type": "object",
+          "required": [
+            "toConfigMap"
+          ],
+          "properties": {
+            "toConfigMap": {
+              "description": "Reference to the ConfigMap where the list of offsets will be written to.",
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "description": "The state the connector should be in. Defaults to running.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "paused",
+            "stopped",
+            "running"
+          ]
+        },
+        "tasksMax": {
+          "description": "The maximum number of tasks for the Kafka Connector.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "version": {
+          "description": "Desired version or version range to respect when starting the Kafka Connector. This is only supported when using Kafka Connect version 4.1.0 and higher.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "status": {
+      "description": "The status of the Kafka Connector.",
+      "type": "object",
+      "properties": {
+        "autoRestart": {
+          "description": "The auto restart status.",
+          "type": "object",
+          "properties": {
+            "connectorName": {
+              "description": "The name of the connector being restarted.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "count": {
+              "description": "The number of times the connector or task is restarted.",
+              "type": "integer"
+            },
+            "lastRestartTimestamp": {
+              "description": "The last time the automatic restart was attempted. The required format is 'yyyy-MM-ddTHH:mm:ssZ' in the UTC time zone.",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "conditions": {
+          "description": "List of status conditions.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "lastTransitionTime": {
+                "description": "Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "message": {
+                "description": "Human-readable message indicating details about the condition's last transition.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "reason": {
+                "description": "The reason for the condition's last transition (a single word in CamelCase).",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "status": {
+                "description": "The status of the condition, either True, False or Unknown.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "type": {
+                "description": "The unique identifier of a condition, used to distinguish between other conditions in the resource.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "connectorStatus": {
+          "description": "The connector status, as reported by the Kafka Connect REST API.",
+          "x-kubernetes-preserve-unknown-fields": true
+        },
+        "observedGeneration": {
+          "description": "The generation of the CRD that was last reconciled by the operator.",
+          "type": "integer"
+        },
+        "tasksMax": {
+          "description": "The maximum number of tasks for the Kafka Connector.",
+          "type": "integer"
+        },
+        "topics": {
+          "description": "The list of topics used by the Kafka Connector.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "kafka.strimzi.io",
+      "kind": "KafkaConnector",
+      "version": "v1"
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}
