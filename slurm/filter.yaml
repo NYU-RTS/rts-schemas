@@ -1,4 +1,6 @@
 inverseOperationIds:
+    - slurm_v0043_delete_job
+    - slurmdb_v0043_post_users_association
     - slurmdb_v0043_get_accounts
     - slurmdb_v0043_get_account
     - slurmdb_v0043_delete_account
