@@ -12,7 +12,7 @@
     },
     "x-slurm": {
       "data_parsers": [
-        {
+       {
           "plugin": "v0.0.43",
           "flags": [
             "NONE"
@@ -107,9 +107,127 @@
         "tags": [
           "slurm"
         ]
+      },
+      "delete": {
+        "operationId": "slurm_v0043_delete_jobs",
+        "summary": "send signal to list of jobs",
+        "requestBody": {
+          "description": "Signal or cancel jobs",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v0.0.43_kill_jobs_msg"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "description of jobs to signal",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_kill_jobs_resp"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "description of jobs to signal",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_kill_jobs_resp"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "slurm"
+        ]
       }
     },
     "/slurm/v0.0.43/job/{job_id}": {
+      "get": {
+        "operationId": "slurm_v0043_get_job",
+        "summary": "get job info",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "description": "Job ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "simple"
+          },
+          {
+            "name": "update_time",
+            "in": "query",
+            "description": "Query jobs updated more recently than this time (UNIX timestamp)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "flags",
+            "in": "query",
+            "description": "Query flags",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ALL",
+                "DETAIL",
+                "MIXED",
+                "LOCAL",
+                "SIBLING",
+                "FEDERATION",
+                "FUTURE"
+              ]
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "job(s) information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_job_info_resp"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "job(s) information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_job_info_resp"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "slurm"
+        ]
+      },
       "delete": {
         "operationId": "slurm_v0043_delete_job",
         "summary": "cancel or signal job",
@@ -1487,6 +1605,12 @@
         },
         "required": []
       },
+      "v0.0.43_hostlist_string": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
       "v0.0.43_csv_string": {
         "type": "array",
         "items": {
@@ -1980,16 +2104,7 @@
             "description": "Minimum tmp disk space required per node (32 bit integer number with flags)",
             "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
           },
-          "power": {
-            "type": "object",
-            "properties": {
-              "flags": {
-                "type": "array",
-                "deprecated": true
-              }
-            }
-          },
-          "preempt_time": {
+         "preempt_time": {
             "description": "Time job received preemption signal (UNIX timestamp) (UNIX timestamp or time string recognized by Slurm (e.g., '[MM/DD[/YY]-]HH:MM[:SS]'); may also be infinite or unset) (64 bit integer number with flags)",
             "$ref": "#/components/schemas/v0.0.43_uint64_no_val_struct"
           },
@@ -2478,6 +2593,30 @@
         },
         "required": []
       },
+      "v0.0.43_openapi_kill_jobs_resp": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "resultant status of signal request (List of jobs signal responses)",
+            "$ref": "#/components/schemas/v0.0.43_kill_jobs_resp_msg"
+          },
+          "meta": {
+            "description": "Slurm meta values",
+            "$ref": "#/components/schemas/v0.0.43_openapi_meta"
+          },
+          "errors": {
+            "description": "Query errors",
+            "$ref": "#/components/schemas/v0.0.43_openapi_errors"
+          },
+          "warnings": {
+            "description": "Query warnings",
+            "$ref": "#/components/schemas/v0.0.43_openapi_warnings"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
       "v0.0.43_kill_jobs_resp_msg": {
         "description": "List of jobs signal responses",
         "type": "array",
@@ -2532,6 +2671,119 @@
           "job_id",
           "federation/sibling"
         ]
+      },
+      "v0.0.43_kill_jobs_msg": {
+        "type": "object",
+        "properties": {
+          "account": {
+            "description": "Filter jobs to a specific account",
+            "type": "string"
+          },
+          "flags": {
+            "description": "Filter jobs according to flags",
+            "type": "array",
+            "items": {
+              "enum": [
+                "BATCH_JOB",
+                "ARRAY_TASK",
+                "FULL_STEPS_ONLY",
+                "FULL_JOB",
+                "FEDERATION_REQUEUE",
+                "HURRY",
+                "OUT_OF_MEMORY",
+                "NO_SIBLING_JOBS",
+                "RESERVATION_JOB",
+                "VERBOSE",
+                "CRON_JOBS",
+                "WARNING_SENT"
+              ],
+              "type": "string"
+            }
+          },
+          "job_name": {
+            "description": "Filter jobs to a specific name",
+            "type": "string"
+          },
+          "jobs": {
+            "description": "List of jobs to signal",
+            "$ref": "#/components/schemas/v0.0.43_kill_jobs_msg_jobs_array"
+          },
+          "partition": {
+            "description": "Filter jobs to a specific partition",
+            "type": "string"
+          },
+          "qos": {
+            "description": "Filter jobs to a specific QOS",
+            "type": "string"
+          },
+          "reservation": {
+            "description": "Filter jobs to a specific reservation",
+            "type": "string"
+          },
+          "signal": {
+            "description": "Signal to send to jobs",
+            "type": "string"
+          },
+          "job_state": {
+            "description": "Filter jobs to a specific state",
+            "type": "array",
+            "items": {
+              "enum": [
+                "PENDING",
+                "RUNNING",
+                "SUSPENDED",
+                "COMPLETED",
+                "CANCELLED",
+                "FAILED",
+                "TIMEOUT",
+                "NODE_FAIL",
+                "PREEMPTED",
+                "BOOT_FAIL",
+                "DEADLINE",
+                "OUT_OF_MEMORY",
+                "LAUNCH_FAILED",
+                "REQUEUED",
+                "REQUEUE_HOLD",
+                "SPECIAL_EXIT",
+                "RESIZING",
+                "CONFIGURING",
+                "COMPLETING",
+                "STOPPED",
+                "RECONFIG_FAIL",
+                "POWER_UP_NODE",
+                "REVOKED",
+                "REQUEUE_FED",
+                "RESV_DEL_HOLD",
+                "SIGNALING",
+                "STAGE_OUT"
+              ],
+              "type": "string"
+            }
+          },
+          "user_id": {
+            "description": "Filter jobs to a specific numeric user id",
+            "type": "string"
+          },
+          "user_name": {
+            "description": "Filter jobs to a specific user name",
+            "type": "string"
+          },
+          "wckey": {
+            "description": "Filter jobs to a specific wckey",
+            "type": "string"
+          },
+          "nodes": {
+            "description": "Filter jobs to a set of nodes",
+            "$ref": "#/components/schemas/v0.0.43_hostlist_string"
+          }
+        },
+        "required": []
+      },
+      "v0.0.43_kill_jobs_msg_jobs_array": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
       },
       "v0.0.43_openapi_kill_job_resp": {
         "type": "object",
