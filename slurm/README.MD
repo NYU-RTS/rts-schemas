@@ -16,3 +16,6 @@ OpenAPI-Format CLI settings:
 ✅  OpenAPI filtered & formatted successfully
 ============================================================================================================================
 ```
+
+
+Finally, trim the schema to only have the `v0.0.43`.

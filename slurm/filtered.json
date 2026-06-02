@@ -41,6 +41,92 @@
     }
   ],
   "paths": {
+    "/slurm/v0.0.43/job/{job_id}": {
+      "delete": {
+        "operationId": "slurm_v0043_delete_job",
+        "summary": "cancel or signal job",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "description": "Job ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "simple"
+          },
+          {
+            "name": "signal",
+            "in": "query",
+            "description": "Signal to send to Job",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          },
+          {
+            "name": "flags",
+            "in": "query",
+            "description": "Signalling flags",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "BATCH_JOB",
+                "ARRAY_TASK",
+                "FULL_STEPS_ONLY",
+                "FULL_JOB",
+                "FEDERATION_REQUEUE",
+                "HURRY",
+                "OUT_OF_MEMORY",
+                "NO_SIBLING_JOBS",
+                "RESERVATION_JOB",
+                "VERBOSE",
+                "CRON_JOBS",
+                "WARNING_SENT"
+              ]
+            },
+            "allowEmptyValue": false,
+            "allowReserved": false,
+            "explode": false,
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "job signal result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_kill_job_resp"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "job signal result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_kill_job_resp"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "slurm"
+        ]
+      }
+    },
     "/slurmdb/v0.0.43/associations/": {
       "get": {
         "operationId": "slurmdb_v0043_get_associations",
@@ -1294,6 +1380,85 @@
           }
         },
         "required": []
+      },
+      "v0.0.43_kill_jobs_resp_msg": {
+        "description": "List of jobs signal responses",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/v0.0.43_kill_jobs_resp_job"
+        }
+      },
+      "v0.0.43_kill_jobs_resp_job": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "string": {
+                "description": "String error encountered signaling job",
+                "type": "string"
+              },
+              "code": {
+                "description": "Numeric error encountered signaling job",
+                "type": "integer",
+                "format": "int32"
+              },
+              "message": {
+                "description": "Error message why signaling job failed",
+                "type": "string"
+              }
+            }
+          },
+          "step_id": {
+            "description": "Job or Step ID that signaling failed",
+            "type": "string"
+          },
+          "job_id": {
+            "description": "Job ID that signaling failed (32 bit integer number with flags)",
+            "$ref": "#/components/schemas/v0.0.43_uint32_no_val_struct"
+          },
+          "federation": {
+            "type": "object",
+            "properties": {
+              "sibling": {
+                "description": "Name of federation sibling (may be empty for non-federation)",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required": [
+          "error/string",
+          "error/code",
+          "error/message",
+          "step_id",
+          "job_id",
+          "federation/sibling"
+        ]
+      },
+      "v0.0.43_openapi_kill_job_resp": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "description": "resultant status of signal request (List of jobs signal responses)",
+            "$ref": "#/components/schemas/v0.0.43_kill_jobs_resp_msg"
+          },
+          "meta": {
+            "description": "Slurm meta values",
+            "$ref": "#/components/schemas/v0.0.43_openapi_meta"
+          },
+          "errors": {
+            "description": "Query errors",
+            "$ref": "#/components/schemas/v0.0.43_openapi_errors"
+          },
+          "warnings": {
+            "description": "Query warnings",
+            "$ref": "#/components/schemas/v0.0.43_openapi_warnings"
+          }
+        },
+        "required": [
+          "status"
+        ]
       },
       "v0.0.43_tres_list": {
         "type": "array",
