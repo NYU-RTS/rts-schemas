@@ -4,7 +4,7 @@ inverseOperationIds:
     - slurmdb_v0043_delete_account
     - slurmdb_v0043_post_account
     - slurmdb_v0043_get_associations
-    - slurmdb_v0043_post_association
+    - slurmdb_v0043_post_associations
     - slurmdb_v0043_delete_association
 unusedComponents:
     - schemas

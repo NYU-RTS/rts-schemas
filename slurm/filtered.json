@@ -83,6 +83,45 @@
       }
     },
     "/slurmdb/v0.0.43/associations/": {
+      "post": {
+        "operationId": "slurmdb_v0043_post_associations",
+        "summary": "Set associations info",
+        "requestBody": {
+          "description": "Job description",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v0.0.43_openapi_assocs_resp"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "status of associations update",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_resp"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "status of associations update",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_resp"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "slurmdb"
+        ]
+      },
       "get": {
         "operationId": "slurmdb_v0043_get_associations",
         "summary": "Get association list",
@@ -912,6 +951,24 @@
           "source": {
             "description": "Source of warning or where warning was first detected",
             "type": "string"
+          }
+        },
+        "required": []
+      },
+      "v0.0.43_openapi_resp": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "description": "Slurm meta values",
+            "$ref": "#/components/schemas/v0.0.43_openapi_meta"
+          },
+          "errors": {
+            "description": "Query errors",
+            "$ref": "#/components/schemas/v0.0.43_openapi_errors"
+          },
+          "warnings": {
+            "description": "Query warnings",
+            "$ref": "#/components/schemas/v0.0.43_openapi_warnings"
           }
         },
         "required": []
