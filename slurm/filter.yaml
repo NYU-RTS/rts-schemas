@@ -2,7 +2,7 @@ inverseOperationIds:
     - slurm_v0043_delete_jobs
     - slurmdb_v0043_get_accounts
     - slurmdb_v0043_delete_account
-    - slurmdb_v0043_post_account
+    - slurmdb_v0043_post_accounts
     - slurmdb_v0043_get_associations
     - slurmdb_v0043_post_associations
     - slurmdb_v0043_delete_association
