@@ -798,6 +798,45 @@
         "tags": [
           "slurmdb"
         ]
+      },
+      "post": {
+        "operationId": "slurmdb_v0043_post_accounts",
+        "summary": "Add/update list of accounts",
+        "requestBody": {
+          "description": "Description of accounts to update/create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v0.0.43_openapi_accounts_resp"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Status of account update request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_resp"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Status of account update request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v0.0.43_openapi_resp"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "slurmdb"
+        ]
       }
     }
   },
